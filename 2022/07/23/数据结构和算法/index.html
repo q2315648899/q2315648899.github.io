@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数据结构和算法二叉树 二叉树前序遍历、中序遍历、后序遍历。  满二叉树，完全二叉树（如果该二叉树的所有叶子节点都在最后一层或者倒数第二层，而且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，我们称为完全二叉树）。  顺序存储二叉树是使用顺序存储的二叉树。将二叉树存储在一个数组中，通过存储元素的下标反映元素之间的父子关系。二叉树的顺序存储就是用一组连续的存储单元存放二又树中的结点元素，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构和算法">
+<meta property="og:url" content="http://example.com/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据结构和算法二叉树 二叉树前序遍历、中序遍历、后序遍历。  满二叉树，完全二叉树（如果该二叉树的所有叶子节点都在最后一层或者倒数第二层，而且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，我们称为完全二叉树）。  顺序存储二叉树是使用顺序存储的二叉树。将二叉树存储在一个数组中，通过存储元素的下标反映元素之间的父子关系。二叉树的顺序存储就是用一组连续的存储单元存放二又树中的结点元素，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170451669.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170606509.png">
+<meta property="og:image" content="http://example.com/img/image-20211017170716264.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017122347145.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164634054.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164654839.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164808945.png">
+<meta property="og:image" content="http://example.com/img/image-20211018005242287.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018002139673.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003234124.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003300188.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003332890.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018020434517.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018022851648.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024153379.png">
+<meta property="og:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024323135.png">
+<meta property="article:published_time" content="2022-07-23T10:23:08.946Z">
+<meta property="article:modified_time" content="2022-07-23T10:43:15.245Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png">
+
+<link rel="canonical" href="http://example.com/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据结构和算法 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构和算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-23 18:23:08 / 修改时间：18:43:15" itemprop="dateCreated datePublished" datetime="2022-07-23T18:23:08+08:00">2022-07-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+<li><p>二叉树前序遍历、中序遍历、后序遍历。</p>
+</li>
+<li><p>满二叉树，完全二叉树（如果该二叉树的所有叶子节点都在最后一层或者倒数第二层，而且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，我们称为完全二叉树）。</p>
+</li>
+<li><p>顺序存储二叉树是使用顺序存储的二叉树。将二叉树存储在一个数组中，通过存储元素的下标反映元素之间的父子关系。二叉树的顺序存储就是用一组连续的存储单元存放二又树中的结点元素，一般按照二叉树结点自上向下、自左向右的顺序存储。通常只考虑完全二叉树。</p>
+</li>
+</ul>
+<h3 id="二叉排序树（也叫二叉搜索树）"><a href="#二叉排序树（也叫二叉搜索树）" class="headerlink" title="二叉排序树（也叫二叉搜索树）"></a>二叉排序树（也叫二叉搜索树）</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png" alt="image-20211017121948691"></p>
+<p>二叉排序树，中序遍历出来的数据是递增有序的。如果一个是递增数列如：{1，2，3，4，5}，创建二叉树时左子树全为空，更像一个单链表。</p>
+<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170451669.png" alt="image-20211017170451669"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170606509.png" alt="image-20211017170606509"></p>
+<p><img src="/img/image-20211017170716264.png" alt="image-20211017170716264"></p>
+<h3 id="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"><a href="#平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）" class="headerlink" title="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"></a>平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。（和完全二叉树不同，平衡二叉树没说叶子节点在左边或右边一定要连续）</p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017122347145.png" alt="image-20211017122347145"></p>
+<h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164634054.png" alt="image-20211017164634054"></p>
+<h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164654839.png" alt="image-20211017164654839"></p>
+<h4 id="左右双旋转"><a href="#左右双旋转" class="headerlink" title="左右双旋转"></a>左右双旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164808945.png" alt="image-20211017164808945"></p>
+<h2 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h2><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>B树，这个B是指Balanced , 平衡的意思，不是指的Binary ，要明确这点.</p>
+<p>B树仍然遵循(BST 二叉排序树)的规则</p>
+<p><img src="/img/image-20211018005242287.png" alt="image-20211018005242287"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018002139673.png" alt="image-20211018002139673"></p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003234124.png" alt="image-20211018003234124"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003300188.png" alt="image-20211018003300188"></p>
+<h3 id="mysql的B-树"><a href="#mysql的B-树" class="headerlink" title="mysql的B+树"></a>mysql的B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003332890.png" alt="image-20211018003332890"></p>
+<h4 id="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"><a href="#主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）" class="headerlink" title="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"></a>主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018020434517.png" alt="image-20211018020434517"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018022851648.png" alt="image-20211018022851648"></p>
+<h4 id="稠密索引、稀疏索引"><a href="#稠密索引、稀疏索引" class="headerlink" title="稠密索引、稀疏索引"></a>稠密索引、稀疏索引</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024153379.png" alt="image-20211018024153379"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024323135.png" alt="image-20211018024323135"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/23/springmvc%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" rel="prev" title="springmvc个人总结">
+      <i class="fa fa-chevron-left"></i> springmvc个人总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/23/mysql%E7%AC%94%E8%AE%B0(%E4%B8%AA%E4%BA%BA)/" rel="next" title="mysql笔记(个人)">
+      mysql笔记(个人) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">数据结构和算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.1.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E4%B9%9F%E5%8F%AB%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">二叉排序树（也叫二叉搜索树）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">删除节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88%E4%B9%9F%E5%8F%AB%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%E3%80%81%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E6%97%8B%E8%BD%AC"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">左旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E6%97%8B%E8%BD%AC"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">右旋转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E5%8F%B3%E5%8F%8C%E6%97%8B%E8%BD%AC"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">左右双旋转</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%8F%89%E6%A0%91"><span class="nav-number">1.2.</span> <span class="nav-text">多叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#B%E6%A0%91"><span class="nav-number">1.2.1.</span> <span class="nav-text">B树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">概念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-%E6%A0%91"><span class="nav-number">1.2.2.</span> <span class="nav-text">B+树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql%E7%9A%84B-%E6%A0%91"><span class="nav-number">1.2.3.</span> <span class="nav-text">mysql的B+树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%EF%BC%88%E4%B8%80%E7%BA%A7%E7%B4%A2%E5%BC%95%E3%80%81%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%EF%BC%89%E3%80%81%E9%9D%9E%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%EF%BC%88%E4%BA%8C%E7%BA%A7%E7%B4%A2%E5%BC%95%E3%80%81%E8%BE%85%E5%8A%A9%E7%B4%A2%E5%BC%95%EF%BC%89"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%A0%E5%AF%86%E7%B4%A2%E5%BC%95%E3%80%81%E7%A8%80%E7%96%8F%E7%B4%A2%E5%BC%95"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">稠密索引、稀疏索引</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
