@@ -20,21 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="JVM有序性volatile和heppens-before规则来保证。 happens-before 关系的规则和重排序冲突吗？ 答：不冲突。只要重排序后依然符合原来的heppens-before规则，那么这个重排序也会发生，比如，单线程内，语句 1 在语句 2 的前面，所以根据“单线程规则”，语句 1 happens-before 语句 2，但是并不是说语句 1 一定要在语句 2 之前被执行，例">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JVM">
-<meta property="og:url" content="http://example.com/2022/07/23/JVM/index.html">
+  <meta name="description" content="受尽苦难而不厌此，乃修罗之道">
+<meta property="og:type" content="website">
+<meta property="og:title" content="标签">
+<meta property="og:url" content="http://example.com/tags/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="JVM有序性volatile和heppens-before规则来保证。 happens-before 关系的规则和重排序冲突吗？ 答：不冲突。只要重排序后依然符合原来的heppens-before规则，那么这个重排序也会发生，比如，单线程内，语句 1 在语句 2 的前面，所以根据“单线程规则”，语句 1 happens-before 语句 2，但是并不是说语句 1 一定要在语句 2 之前被执行，例">
+<meta property="og:description" content="受尽苦难而不厌此，乃修罗之道">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-23T10:22:49.373Z">
-<meta property="article:modified_time" content="2022-07-27T17:31:14.381Z">
+<meta property="article:published_time" content="2022-07-27T15:34:00.000Z">
+<meta property="article:modified_time" content="2022-07-27T15:47:40.731Z">
 <meta property="article:author" content="Wang Baibai">
-<meta property="article:tag" content="JVM">
-<meta property="article:tag" content="底层">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/07/23/JVM/">
+<link rel="canonical" href="http://example.com/tags/">
 
 
 <script id="page-configurations">
@@ -42,12 +40,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>JVM | Hexo</title>
+  <title>标签 | Hexo
+</title>
   
 
 
@@ -187,169 +186,51 @@
       <div class="main-inner">
         <div class="content-wrap">
           
+  
+  
 
-          <div class="content post posts-expand">
+          <div class="content page posts-expand">
             
 
     
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/23/JVM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Baibai">
-      <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
+    
+    
+    <div class="post-block" lang="zh-CN">
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          JVM
-        </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+<h1 class="post-title" itemprop="name headline">标签
+</h1>
 
-              <time title="创建时间：2022-07-23 18:22:49" itemprop="dateCreated datePublished" datetime="2022-07-23T18:22:49+08:00">2022-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-28 01:31:14" itemprop="dateModified" datetime="2022-07-28T01:31:14+08:00">2022-07-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
-                </span>
-            </span>
+<div class="post-meta">
+  
 
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h2><p>volatile和heppens-before规则来保证。</p>
-<p><strong>happens-before 关系的规则和重排序冲突吗？</strong></p>
-<p>答：不冲突。只要重排序后依然符合原来的heppens-before规则，那么这个重排序也会发生，比如，单线程内，语句 1 在语句 2 的前面，所以根据“单线程规则”，语句 1 happens-before 语句 2，但是并不是说语句 1 一定要在语句 2 之前被执行，例如语句 1 修改的是变量 a 的值，而语句 2 的内容和变量 a 无关，那么语句 1 和语句 2 依然有可能被重排序。当然，如果语句 1 修改的是变量 a，而语句 2 正好是去读取变量 a 的值，那么语句 1 就一定会在语句 2 之前执行了。</p>
-<span id="more"></span>
-<p>happens-before原则包含一系列规则：</p>
-<ol>
-<li><p>单线程规则：即一个线程内必须保证语义串行性；</p>
-</li>
-<li><p>锁规则：即对同一个锁的解锁一定发生在再次加锁之前；</p>
-</li>
-<li><p>volatile 变量规则：对一个 volatile 变量的写操作 happen-before 后面对该变量的读操作；</p>
-</li>
-<li><p>线程启动规则：Thread 对象的 start 方法 happen-before 此线程 run 方法中的每一个操作；</p>
-</li>
-<li><p>线程 join 规则：<br>我们知道 join 可以让线程之间等待，假设线程 A 通过调用 threadB.start() 启动了一个新线程 B，然后调用 threadB.join() ，那么线程 A 将一直等待到线程 B 的 run 方法结束（不考虑中断等特殊情况），然后 join 方法才返回。在 join 方法返回后，线程 A 中的所有后续操作都可以看到线程 B 的 run 方法中执行的所有操作的结果，也就是线程 B 的 run 方法里面的操作 happens-before 线程 A 的 join 之后的语句；</p>
-</li>
-<li><p>线程中断规则：<br>对线程 interrupt 方法的调用 happens-before 检测该线程的中断事件。<br>也就是说，如果一个线程被其他线程 interrupt，那么在检测中断时（比如调用 Thread.interrupted 或者 Thread.isInterrupted 方法）一定能看到此次中断的发生，不会发生检测结果不准的情况。</p>
-</li>
-<li><p>并发工具类的规则：</p>
-<p>线程安全的并发容器（如 HashTable）在 get 某个值时一定能看到在此之前发生的 put 等存入操作的结果。也就是说，线程安全的并发容器的存入操作 happens-before 读取操作。</p>
-<p>信号量（Semaphore）它会释放许可证，也会获取许可证。这里的释放许可证的操作 happens-before 获取许可证的操作，也就是说，如果在获取许可证之前有释放许可证的操作，那么在获取时一定可以看到。</p>
-<p>Future：Future 有一个 get 方法，可以用来获取任务的结果。那么，当 Future 的 get 方法得到结果的时候，一定可以看到之前任务中所有操作的结果，也就是说 Future 任务中的所有操作 happens-before Future 的 get 操作。</p>
-<p>线程池：要想利用线程池，就需要往里面提交任务（Runnable 或者 Callable），这里面也有一个 happens-before 关系的规则，那就是提交任务的操作 happens-before 任务的执行。</p>
-</li>
-</ol>
-
-    </div>
-
-    
-    
-    <script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script>
-<script>
-  jinrishici.load((result) => {
-    let jrsc = document.getElementById('jrsc');
-    const data = result.data;
-    let author = data.origin.author;
-    let title = '《' + data.origin.title + '》';
-    let content = data.content.substr(0, data.content.length - 1);
-    let dynasty = data.origin.dynasty.substr(0, data.origin.dynasty.length - 1);
-    jrsc.innerText = content + ' @ ' + dynasty + '·' + author + title;
-  });
-</script>
-<div style="text-align: center"><span id="jrsc" >正在加载今日诗词....</span></div>
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Wang Baibai
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://example.com/2022/07/23/JVM/" title="JVM">http://example.com/2022/07/23/JVM/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
 </div>
 
+</header>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/JVM/" rel="tag"># JVM</a>
-              <a href="/tags/%E5%BA%95%E5%B1%82/" rel="tag"># 底层</a>
+      
+      
+      
+      <div class="post-body">
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+              目前共计 2 个标签
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/JVM/" style="font-size: 12px; color: #ccc">JVM</a> <a href="/tags/%E5%BA%95%E5%B1%82/" style="font-size: 12px; color: #ccc">底层</a>
+            </div>
           </div>
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/07/23/my-first-blog/" rel="prev" title="这是我的第一个博客">
-      <i class="fa fa-chevron-left"></i> 这是我的第一个博客
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/07/23/springmvc%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" rel="next" title="springmvc个人总结">
-      springmvc个人总结 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      </div>
+      
+      
+      
     </div>
-      </footer>
     
-  </article>
-  
-  
-  
 
+    
+    
+    
 
 
           </div>
@@ -400,7 +281,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM"><span class="nav-number">1.</span> <span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">有序性</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

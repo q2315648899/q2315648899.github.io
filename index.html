@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="受尽苦难而不厌此，乃修罗之道">
@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="受尽苦难而不厌此，乃修罗之道">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Wang Zixuan">
+<meta property="article:author" content="Wang Baibai">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/">
@@ -101,6 +101,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -115,16 +116,58 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-rss">
+
+    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -151,7 +194,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Zixuan">
+      <meta itemprop="name" content="Wang Baibai">
       <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
@@ -175,7 +218,21 @@
               <time title="创建时间：2022-07-23 18:24:05 / 修改时间：18:42:33" itemprop="dateCreated datePublished" datetime="2022-07-23T18:24:05+08:00">2022-07-23</time>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>14k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>23 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -188,281 +245,14 @@
       
           <h1 id="分布式事务相关"><a href="#分布式事务相关" class="headerlink" title="分布式事务相关"></a>分布式事务相关</h1><h2 id="学成在线"><a href="#学成在线" class="headerlink" title="学成在线"></a>学成在线</h2><h3 id="day19"><a href="#day19" class="headerlink" title="day19:"></a>day19:</h3><p><strong>业务场景</strong>：支付成功即完成订单，订单完成之后系统需自动添加选课。</p>
 <p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211005154954957.png" alt="image-20211005154954957"></p>
-<h4 id="1，防止订单服务重复提交，产生重复数据（实现幂等性）"><a href="#1，防止订单服务重复提交，产生重复数据（实现幂等性）" class="headerlink" title="1，防止订单服务重复提交，产生重复数据（实现幂等性）"></a>1，防止订单服务重复提交，产生重复数据（实现幂等性）</h4><p>业务场景：提交订单成功跳转到支付页面，可能会出现重复刷新跳转到支付页面</p>
-<p><strong>问题产生</strong>：和<strong>万信金融 day09:第三章：发标</strong>类似。</p>
-<p><strong>解决方案</strong>：和<strong>万信金融 day09:第三章：发标</strong>类似。</p>
-<h4 id="2，防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）"><a href="#2，防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）" class="headerlink" title="2，防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）"></a>2，防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）</h4><p><strong>问题产生</strong>：在生产环境里，考虑到订单服务可能是集群形式部署。每个订单服务都会有添加选课信息的定时任务，就有可能在1分钟（定时任务执行间隔）内重复执行，造成消息队列产生重复的消息。（除了在数据库中用乐观锁，也可以根据任务ID在redis中缓存key键值对）</p>
-<p><strong>解决方案</strong>：为了避免任务在1分钟内重复执行，这里在消息表中使用乐观锁，实现思路如下： </p>
-<ol>
-<li>每次取任务时判断当前版本及任务id是否匹配（且版本号&lt;&#x3D;1，原方案中没有判断版本号&lt;&#x3D;1，这样只保证了原子性，还是会有集群中其他订单服务执行定时任务重复发送消息），如果匹配则执行任务，如果不匹配则取消执行。 </li>
-<li>如果当前版本和任务Id可以匹配到任务则更新当前版本加1.</li>
-</ol>
-<p><em><strong><u><span style='color:red'>有个ACK机制需要注意下</span></u></strong></em></p>
-<h2 id="万信金融"><a href="#万信金融" class="headerlink" title="万信金融"></a>万信金融</h2><h3 id="day09-第三章：发标"><a href="#day09-第三章：发标" class="headerlink" title="day09:第三章：发标"></a>day09:第三章：发标</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211005181651079.png" alt="image-20211005181651079"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211005181839108.png" alt="image-20211005181839108"></p>
-<h4 id="1，防止存管代理服务或银行存管服务重复提交，产生重复数据（实现幂等性）"><a href="#1，防止存管代理服务或银行存管服务重复提交，产生重复数据（实现幂等性）" class="headerlink" title="1，防止存管代理服务或银行存管服务重复提交，产生重复数据（实现幂等性）"></a>1，防止存管代理服务或银行存管服务重复提交，产生重复数据（实现幂等性）</h4><p><strong>问题产生</strong>：前端请求交易中心服务审核标的，交易中心服务向存管代理服务A发起远程请求，</p>
-<p>1，存管代理服务A 在向数据库保存完交易记录后出现网络问题，此时，交易中心服务一直等待，前端也收不到响应信息， 那么客户在等待一段时间后，很有可能会在前端再次点击按钮请求交易中心服务审核标的，交易中心服务向存管代理服务B发起远程请求，存管代理服务B判断交易记录在数据库中已存在，不会向数据库保存交易记录。但是会继续向下执行向银行存管系统发送标的数据同步请求，（若此时存管代理服务A也成功保存了在银行存管系统保存重复标的信息）可能会在银行存管系统保存重复标的信息。</p>
-<p>2，客户通过前端在短时间(例如5秒)内多次点击按钮重复发送请求，可能交易中心几乎同时请求存管代理服务A、B，服务A、B同时查询数据库中交易记录不存在，会分别保存一条交易记录，数据就重复了。</p>
-<p><strong>解决方案</strong>：1. 若交易记录不存在则新增交易记录，requestNo为唯一索引，新保存的数据的状态为“未同步”（此时redis肯定没有key为requestNo的缓存键值对，则利用redis原子性自增requestNo&#x3D;1，并设置过期时间（这个地方保证在业务执行完之前不能过期，否则会有并发问题，所以要考虑缓存续命的问题：参考大厂学院redis）。</p>
-<ol start="2">
-<li>若交易记录存在并且数据状态为“未同步”，此阶段存在并发可能，利用redis原子性自增（incrby），来争夺请 求执行权，若count大于1，说明已有线程在执行该操作，直接返回“正在处理”。 </li>
-<li>若交易记录存在并且数据状态为已同步，直接返回处理结果。</li>
-</ol>
-<p>注意：为了满足实现幂等性的需求，要保证只有第一次请求时才为requestNo生成新的值。</p>
-<h2 id="分布式事务产生的原因"><a href="#分布式事务产生的原因" class="headerlink" title="分布式事务产生的原因"></a>分布式事务产生的原因</h2><p>分布式事务是伴随着系统拆分出现的，前面我们说过，分布式系统解决了海量数据服务对扩展性的要求，但是增加了架构上的复杂性，在这一点上，分布式事务就是典型的体现。</p>
-<p>在实际开发中，分布式事务产生的原因主要来源于存储和服务的拆分。</p>
-<h3 id="存储层拆分"><a href="#存储层拆分" class="headerlink" title="存储层拆分"></a>存储层拆分</h3><p>存储层拆分，最典型的就是数据库分库分表</p>
-<h3 id="服务层拆分"><a href="#服务层拆分" class="headerlink" title="服务层拆分"></a>服务层拆分</h3><p>服务层拆分也就是业务的服务化，系统架构的演进是从集中式到分布式，业务功能之间越来越解耦合。</p>
-<h2 id="分布式锁的常用实现"><a href="#分布式锁的常用实现" class="headerlink" title="分布式锁的常用实现"></a>分布式锁的常用实现</h2><p>实现分布式锁目前有三种流行方案，即基于关系型数据库、Redis、ZooKeeper 的方案。</p>
-<p>面试回答：使用过redis实现分布式锁，本来准备用msql来实现但是MySQL实现会有很多问题</p>
-<h3 id="基于关系型数据库"><a href="#基于关系型数据库" class="headerlink" title="基于关系型数据库"></a>基于关系型数据库</h3><p>基于关系型数据库实现分布式锁，是依赖数据库的唯一性来实现资源锁定，比如主键和唯一索引等。<br>以唯一索引为例，创建一张锁表，定义方法或者资源名、失效时间等字段，同时针对加锁的信息添加唯一索引，比如方法名，当要锁住某个方法或资源时，就在该表中插入对应方法的一条记录，插入成功表示获取了锁，想要释放锁的时候就删除这条记录。<br>下面创建一张基于数据库的分布式锁表：<br>CREATE TABLE <code>methodLock</code> (<br><code>id</code> int(11) NOT NULL AUTO_INCREMENT COMMENT ‘主键’,<br><code>method_name</code> varchar(64) NOT NULL DEFAULT ‘’ COMMENT ‘锁定的方法或者资源’,<br>PRIMARY KEY (<code>id</code>),<br>UNIQUE KEY <code>uidx_method_name</code> (<code>method_name </code>) USING BTREE<br>) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8 COMMENT&#x3D;’对方法加锁’;</p>
-<p>当希望对某个方法加锁时，执行以下 SQL 语句：<br>insert into methodLock(method_name) values (‘method_name’);</p>
-<p>在数据表定义中，我们对 method_name 做了唯一性约束，如果有多个请求同时提交到数据库的话，数据库会保证只有一个操作可以成功，那么就可以认为操作成功的那个线程获得了该方法的锁，可以执行后面的业务逻辑。<br>当方法执行完毕之后，想要释放锁的话，在数据库中删除对应的记录即可。<br>基于数据库实现分布式锁操作简单，但是并不是一个可以落地的方案，有很多地方需要优化。<br><strong>存在单点故障风险</strong><br>数据库实现方式强依赖数据库的可用性，一旦数据库挂掉，则会导致业务系统不可用，为了解决这个问题，需要配置数据库主从机器，防止单点故障。<br><strong>超时无法失效</strong><br>如果一旦解锁操作失败，则会导致锁记录一直在数据库中，其他线程无法再获得锁，解决这个问题，可以添加独立的定时任务，通过时间戳对比等方式，删除超时数据。<br><strong>不可重入</strong><br>可重入性是锁的一个重要特性，以 Java 语言为例，常见的 Synchronize、Lock 等都支持可重入。在数据库实现方式中，同一个线程在没有释放锁之前无法再次获得该锁，因为数据已经存在，再次插入会失败。实现可重入，需要改造加锁方法，额外存储和判断线程信息，不阻塞获得锁的线程再次请求加锁。<br><strong>无法实现阻塞</strong><br>其他线程在请求对应方法时，插入数据失败会直接返回，不会阻塞线程，如果需要阻塞其他线程，需要不断的重试 insert 操作，直到数据插入成功，这个操作是服务器和数据库资源的极大浪费。<br>可以看到，借助数据库实现一个完备的分布式锁，存在很多问题，并且读写数据库需要一定的性能，可能会影响业务执行的耗时。<br>下面我们来看下应用缓存如何实现。</p>
-<h3 id="基于Redis"><a href="#基于Redis" class="headerlink" title="基于Redis"></a>基于Redis</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211009215307009.png" alt="image-20211009215307009"></p>
-<h4 id="Redis-分布式锁过期了，但是业务逻辑还没处理完怎么办"><a href="#Redis-分布式锁过期了，但是业务逻辑还没处理完怎么办" class="headerlink" title="Redis 分布式锁过期了，但是业务逻辑还没处理完怎么办"></a>Redis 分布式锁过期了，但是业务逻辑还没处理完怎么办</h4><p><strong>缓存续命</strong>：redissonLock使用看门狗线程和lua脚本来实现。</p>
-<p>默认情况下，看门狗的检查锁的超时时间时30秒，也可以通过Config.setLockWatchdogTimeout()来另行指定。</p>
-<p>看门狗自动延期机制：客户端A加锁成功，就会启动一个watch dog看门狗，他是一个后台线程，会每隔10秒检查一下，如果客户端A还持有锁key，那么就会不断的延长锁key的生存时间，默认每次续命又从30秒新开始</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211009233744724.png" alt="image-20211009233744724"></p>
-<p>通过redisson源码分析：</p>
-<ol>
-<li><p>加锁</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">通过三段lua脚本：</span><br><span class="line">1，通过exists判断，如果锁不存在，则设置值和过期时间，加锁成功</span><br><span class="line">2，通过hexists判断，如果锁已存在，并且锁的是当前线程，则证明是重入锁，加锁成功</span><br><span class="line">3，如果锁已存在，但锁的不是当前线程，则证明有其他线程持有锁。</span><br><span class="line">返回当前锁的过期时间(代表了lockzzyy这个锁key的剩余生存时间)，加锁失败</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>加锁成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">启动一个watch dog看门狗，他是一个后台线程，线程内初始化一个定时器，每隔1/3的看门狗检查锁设定时间检查一次。检查当前线程是否还持有锁key（此处也是用lua脚本判断），如果持有那么刷新锁的有效时间到看门狗检查锁的设定时间，定时器会定时检查。</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>解锁</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211009234819264.png" alt="image-20211009234819264"></p>
-</li>
-</ol>
-<p>注意：设置的锁是hash类型</p>
-<h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2><p>nacos包括服务注册和发现、配置中心管理（Eureka只提供服务注册和发现）</p>
-<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p><strong>rabbitmq</strong>：rabbitmq 多个消费者消费同一个队列时，同一个消息只会被一个消费者消费，要想被多次消费，声明不同的队列名，都绑定到你要关心的exchange</p>
-<p><strong>使用中可能产生的问题：</strong>消费的有序性</p>
-<h2 id="Canal数据库同步工具"><a href="#Canal数据库同步工具" class="headerlink" title="Canal数据库同步工具"></a>Canal数据库同步工具</h2><p><strong>通用场景：</strong></p>
-<blockquote>
-<p><strong>canal的原理是基于mysql binlog技术，Canal是基于MySQL变更日志增量订阅和消费的组件</strong></p>
-</blockquote>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211007215014292.png" alt="image-20211007215014292"></p>
-<p><strong>应用场景</strong>（谷粒学院day17）：在前面的统计分析功能中，我们采取了服务调用获取统计数据，这样耦合度高，效率相对较低，目前</p>
-<p>我采取另一种实现方式，通过实时同步数据库表的方式实现，例如我们要统计每天注册与登录人数，我们只需把会员表同步到统计库中，实现本地统计就可以了，这样效率更高，耦合度更低，Canal就是一个很好的数据库同步工具。canal是阿里巴巴旗下的一款开源项目，纯Java开发。基于数据库增量日志解析，提供增量数据订阅&amp;消费，目前主要支持了MySQL。</p>
-<p>通俗点讲，以谷粒学院为例，edu-sta统计模块对应有edusta数据库，edu-ucenter用户中心模块对应educenter数据库（远程库），实际工作中可能两个模块是不同团队开发的，两个数据库也在各自团队的服务器中，且educenter数据库的数据因为私密性不对外公开，edu-sta模块要统计每天注册与登录人数还要远程调用edu-ucenter模块提供的接口来查询educenter数据库，不能直连查询educenter数据库，这样会耦合度比较高，若edu-ucenter模块网络有延时查询效率也相对较低，可以使用Canal只需把会员表（私密性原因同步不了educenter数据库其他的数据）同步到统计库中，实现本地统计就可以了，这样效率更高，耦合度更低。</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211007215553942.png" alt="image-20211007215553942"></p>
-<p><strong>canal结合rocketmq应用场景</strong>：比如电商中的订单信息，订单信息在用户端的展示是通过 ElasticSearch 等文件索引实现的。在订单状态修改后，需要实时同步修改，但一般业务中不会直接操作文件索引，那如何同步数据呢？</p>
-<p>业务数据被分散在不同的存储中，就一定要考虑数据一致性，一个典型的解决方案是基于 Binlog 的数据同步。</p>
-<img src="https://s0.lgstatic.com/i/image/M00/37/48/Ciqc1F8ZTamASw8yAABP8I4Z9dc951.png" alt="image (7).png" data-nodeid="37778">
-
-
-
-<pre><code>        Canal 的实现原理特别巧妙。不知道你有没有看过谍战题材的影片，比如 007 系列。Canal 在这里就好像一个伪装的特工，它模拟 MySQL Slave 的交互协议，把自己作为 MySQL 主从同步中的一个从节点，拉取 Binlog 日志信息，然后进行分发。
-</code></pre>
-<p>Canal 和 RokcetMQ 都是阿里巴巴开源的组件，并且都在阿里云上实现了商业化，二者的集成也是顺其自然的。在 Canal 中已经内置了对 RocketMQ 的支持，支持开箱即用的配置方式。<br>除此之外，Canal 的解决方案还包括一个可视化界面，该界面可以进行动态管理，配置 RocketMQ 集群。如果你在调研 Binlog 数据同步机制，并且自己所在的团队又没有大量的人力进行支持，那可以了解一下这个解决方案。</p>
-<p><strong>canal结合redis应用场景</strong>（mysql-canal-redis双写一致性方案）：mysql-canal-redis。先更新数据库，再删除缓存时可以在canal和redis之间添加消息队列，增加了删除缓存失败时可以重试的机制</p>
-<h2 id="ElasticSearch搜索中间件"><a href="#ElasticSearch搜索中间件" class="headerlink" title="ElasticSearch搜索中间件"></a>ElasticSearch搜索中间件</h2><p>更新映射 :映射创建成功可以添加新字段，已有字段不允许更新。</p>
-<p>删除映射 :通过删除索引来删除映射。</p>
-<p>logstash采集数据时可以增量添加和更新ES中的数据</p>
-<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><blockquote>
-<p>缓存穿透：⼤量请求的 key 根本不存在于缓存中，导致请求直接到了数据库上</p>
-</blockquote>
-<blockquote>
-<p>缓存击穿：某个热点key在同⼀时间⼤⾯积的失效，后⾯的请求 都直接落到了数据库上，造成数据库短时间内承受⼤量请求。 </p>
-</blockquote>
-<blockquote>
-<p>缓存雪崩：大量热点key在同⼀时间⼤⾯积的失效，后⾯的请求 都直接落到了数据库上，造成数据库短时间内承受⼤量请求。 </p>
-</blockquote>
-<h3 id="数据库和缓存一致性的几种更新策略："><a href="#数据库和缓存一致性的几种更新策略：" class="headerlink" title="数据库和缓存一致性的几种更新策略："></a><strong>数据库和缓存一致性的几种更新策略</strong>：</h3><ol>
-<li>先更新数据库，在更新缓存</li>
-<li>先删除缓存，再更新数据库</li>
-</ol>
-<p>解决方案：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">延时双删：线程Asleep的时间，就需要大于线程B读取数据再写入缓存的时间。</span><br><span class="line"> </span><br><span class="line">这个时间怎么确定呢？</span><br><span class="line"> </span><br><span class="line">在业务程序运行的时候，统计下线程读数据和写缓存的操作时间，自行评估自己的项目的读数据业务逻辑的耗时，</span><br><span class="line">以此为基础来进行估算。然后写数据的休眠时间则在读数据业务逻辑的耗时基础上加百毫秒即可。</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">这么做的目的，就是确保读请求结束，写请求可以删除读请求造成的缓存脏数据。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211008015438631.png" alt="image-20211008015438631"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211008015824205.png" alt="image-20211008015824205"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">延时双删优化（异步化）：另开一个子线程延时执行第二次删除的步骤，子线程里也要延时，下图写的不对应该加上延时，这个子线程调用get方法会阻塞，用其他的方式另开一个线程。此时线程A写请求更新完mysql就直接返回，加大吞吐量，由子线程执行延迟删除</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211008015702350.png" alt="image-20211008015702350"></p>
-<p>3.先更新数据库，再删除缓存</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211008023247807.png" alt="image-20211008023247807"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">消息队列重试删除缓存：</span><br></pre></td></tr></table></figure>
-
-<p>1 可以把要删除的缓存值或者是要更新的数据库值暂存到<strong>消息队列</strong>中（例如使用Kafka&#x2F;RabbitMQ等）。<br>2 当程序没有能够成功地删除缓存值或者是更新数据库值时，可以从消息队列中重新读取这些值，然后再次进行删除或更新。<br>3 如果能够成功地删除或更新，我们就要把这些值从消息队列中去除，以免重复操作，此时，我们也可以保证数据库和缓存的数据一致了，否则还需要再次进行重试<br>4 如果重试超过的一定次数后还是没有成功，我们就需要向业务层发送报错信息了，通知运维人员。</p>
-<p><strong>个人建议是，优先使用先更新数据库，再删除缓存的方案。理由如下：</strong></p>
-<p>1 先删除缓存值再更新数据库，有可能导致请求因缓存缺失而访问数据库，给数据库带来压力，严重导致打满mysql。</p>
-<p>2 如果业务应用中读取数据库和写缓存的时间不好估算，那么，延迟双删中的等待时间就不好设置。</p>
-<h3 id="对缓存更新的思考"><a href="#对缓存更新的思考" class="headerlink" title="对缓存更新的思考"></a><strong>对缓存更新的思考</strong></h3><p><strong>为什么删除而不是更新缓存</strong><br>现在思考一个问题，为什么是删除缓存，而不是更新缓存呢？删除一个数据，相比更新一个数据更加轻量级，出问题的概率更小。<br>在实际业务中，缓存的数据可能不是直接来自数据库表，也许来自多张底层数据表的聚合。比如上面提到的商品详情信息，在底层可能会关联商品表、价格表、库存表等，如果更新了一个价格字段，那么就要更新整个数据库，还要关联的去查询和汇总各个周边业务系统的数据，这个操作会非常耗时。<br>从另外一个角度，不是所有的缓存数据都是频繁访问的，更新后的缓存可能会长时间不被访问，所以说，从计算资源和整体性能的考虑，更新的时候删除缓存，等到下次查询命中再填充缓存，是一个更好的方案。</p>
-<h2 id="分库分表（这些也适用于canal的分片规则）"><a href="#分库分表（这些也适用于canal的分片规则）" class="headerlink" title="分库分表（这些也适用于canal的分片规则）"></a>分库分表（这些也适用于canal的分片规则）</h2><h3 id="路由规则"><a href="#路由规则" class="headerlink" title="路由规则"></a>路由规则</h3><ol>
-<li>哈希取模(<strong>如何解决 Hash 分片的缺点，既保证数据均匀分布，又保证扩展性？使用一致性哈希</strong>)</li>
-<li>基于数据范围拆分</li>
-<li>结合数据范围和哈希取模（<strong>一定程度解决 Hash 分片的缺点，保证数据均匀分布，又保证扩展性</strong>）</li>
-</ol>
-<h2 id="缓存集群的负载均衡策略"><a href="#缓存集群的负载均衡策略" class="headerlink" title="缓存集群的负载均衡策略"></a>缓存集群的负载均衡策略</h2><h3 id="路由规则-1"><a href="#路由规则-1" class="headerlink" title="路由规则"></a>路由规则</h3><ol>
-<li><h4 id="哈希取模"><a href="#哈希取模" class="headerlink" title="哈希取模"></a>哈希取模</h4></li>
-<li><h4 id="一致性哈希（会存在数据倾斜问题，可考虑添加虚拟节点解决）"><a href="#一致性哈希（会存在数据倾斜问题，可考虑添加虚拟节点解决）" class="headerlink" title="一致性哈希（会存在数据倾斜问题，可考虑添加虚拟节点解决）"></a>一致性哈希（会存在数据倾斜问题，可考虑添加虚拟节点解决）</h4></li>
-</ol>
-<p>一致性哈希通过一个哈希环实现，hash环空间很大（一般是 0 ~ 2^32），Hash 环的基本思路是获取所有的服务器节点 hash 值，然后获取 key 的 hash，与节点的 hash 进行对比，找出顺时针最近的节点进行存储和读取。</p>
-<p><strong>注意：一致性哈希算法只算hash值不用再取模</strong></p>
-<p>1）如前所述，每⼀台服务器负责⼀段，⼀致性哈希算法对于节点的增减都只需重定位环空间中的⼀⼩ 部分数据，具有较好的容错性和可扩展性。 <strong>但是</strong>，⼀致性哈希算法在服务节点太少时，容易因为节点分部不均匀⽽造成数据倾斜问题。例如系统中 只有两台服务器，其环分布如下，节点2只能负责⾮常⼩的⼀段，⼤量的客户端 请求落在了节点1上，这就是<strong>数据（请求）倾斜问题</strong> </p>
-<p>2）为了解决这种数据倾斜问题，⼀致性哈希算法引⼊了虚拟节点机制，即对每⼀个服务节点计算多个 哈希，每个计算结果位置都放置⼀个此服务节点，称为虚拟节点。 具体做法可以在服务器ip或主机名的后⾯增加编号来实现。⽐如，可以为每台服务器计算三个虚拟节 点，于是可以分别计算 “节点1的ip#1”、“节点1的ip#2”、“节点1的ip#3”、“节点2的ip#1”、“节点2的 ip#2”、“节点2的ip#3”的哈希值，于是形成六个虚拟节点，当客户端被路由到虚拟节点的时候其实是被 路由到该虚拟节点所对应的真实节</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211008152440324.png" alt="image-20211008152440324"></p>
-<h2 id="常见的复杂均衡策略"><a href="#常见的复杂均衡策略" class="headerlink" title="常见的复杂均衡策略"></a>常见的复杂均衡策略</h2><p>一般而言，有以下几种常见的负载均衡策略。</p>
-<h3 id="轮询策略"><a href="#轮询策略" class="headerlink" title="轮询策略"></a>轮询策略</h3><p>轮询策略是最容易想到也是应用最广泛的负载均衡策略。轮询策略会顺序地从服务器列表中选择一个节点，请求会均匀地落在各个服务器上。轮询适合各个节点性能接近，并且没有状态的情况，但是在实际开发中，不同节点之间性能往往很难相同，这时候就可以应用另一种加权轮询策略。</p>
-<h3 id="加权轮询"><a href="#加权轮询" class="headerlink" title="加权轮询"></a>加权轮询</h3><p>加权轮询是对轮询策略的优化，给每个节点添加不同的权重。举个简单的例子，在实际开发中通常使用数组的数据结构来实现轮询，比如现在我有 A、B、C 三个节点，就可以在数组中添加 1、2、3 的数据，分别对应三个节点。现在我进行一个加权调整，让 1、2、3 对应 A，4、5 对应 B、C，这时候继续进行轮询，不同节点的权重就有变化了。</p>
-<h3 id="随机策略"><a href="#随机策略" class="headerlink" title="随机策略"></a>随机策略</h3><p>随机策略和轮询相似，从列表中随机的取一个。我们都学过概率论的课程，真正的随机是很难实现的，所以如果访问量不是很大，最好不要应用随机策略，可能会导致请求不均匀。</p>
-<h3 id="最小响应时间"><a href="#最小响应时间" class="headerlink" title="最小响应时间"></a>最小响应时间</h3><p>这个主要是在一些对请求延时敏感的场景中，在进行路由时，会优先发送给响应时间最小的节点。</p>
-<h3 id="最小并发数策略"><a href="#最小并发数策略" class="headerlink" title="最小并发数策略"></a>最小并发数策略</h3><p>你可以对比最小响应时间，最小并发策略会记录当前时刻每个节点正在处理的事务数，在路由时选择并发最小的节点。最小并发策略可以比较好地反应服务器运行情况，适用于对系统负载较为敏感的场景。<br>除了这些，还有哈希策略等，另外，在第 35 课时中我们提到过一致性哈希，其实一致性哈希也是一种负载均衡策略，一致性哈希经常应用在数据服务的路由中。</p>
-<h2 id="分布式事务一致性解决方案"><a href="#分布式事务一致性解决方案" class="headerlink" title="分布式事务一致性解决方案"></a>分布式事务一致性解决方案</h2><h3 id="TCC（事务补偿）"><a href="#TCC（事务补偿）" class="headerlink" title="TCC（事务补偿）"></a>TCC（事务补偿）</h3><p>基于2PC实现的强一致性。一般金融类业务需要，参考<strong>万信金融使用基于TCC实现的hmily框架</strong></p>
-<h3 id="消息队列-1"><a href="#消息队列-1" class="headerlink" title="消息队列"></a>消息队列</h3><p>添加一个<strong>本地消息表</strong>实现最终一致性。基于 MQ 的可靠消息投递的方案不仅可以解决<strong>由于业务流程的同步执行而造成的阻塞问题</strong>，还可以实现<strong>业务解耦合</strong>、<strong>流量削峰</strong>。流量削峰比如下单后，使用延迟队列延迟支付等<strong>（个人想法，还不知道对不对）</strong>。</p>
-<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a><strong>实现原理</strong></h4><p>参考应用实例：<strong>学成在线-day19-防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）</strong></p>
-<img src="https://s0.lgstatic.com/i/image3/M01/89/B8/Cgq2xl6YKgaAVUwAAAFePtc8mmU340.png" style="color: rgb(63, 63, 63); font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;">
-
-<p>（1）系统收到下单请求，将订单业务数据存入到订单库中，并且同时存储该订单对应的消息数据，比如购买商品的 ID 和数量，消息数据与订单库为同一库，更新订单和存储消息为一个本地事务，要么都成功，要么都失败。<br>（2）库存服务通过消息中间件收到库存更新消息，调用库存服务进行业务操作，同时返回业务处理结果。<br>（3）消息生产方，也就是订单服务收到处理结果后，将本地消息表的数据删除或者设置为已完成。<br>（4）设置异步任务，定时去扫描本地消息表，发现有未完成的任务则重试，保证最终一致性。</p>
-<p>以上就是基于本地消息表一致性的主流程，在具体实践中，还有许多分支情况，比如消息发送失败、下游业务方处理失败等，感兴趣的同学可以思考下。</p>
-<h4 id="要考虑的问题"><a href="#要考虑的问题" class="headerlink" title="要考虑的问题"></a><strong>要考虑的问题</strong></h4><h5 id="消息丢失"><a href="#消息丢失" class="headerlink" title="消息丢失"></a>消息丢失</h5><ul>
-<li><strong>消息中间件发生宕机</strong></li>
-</ul>
-<p>RabbitMQ默认情况下的交换机和队列以及消息是非持久化的，也就是说在服务器重启或者宕机恢复后，之前创建的交换机和队列都将不复存在，之前未消费的消息也就消失不见了。所以， **<u><span style='color:red'>要把消息的投递默认选项设置为持久化、 发送到持久化的交换机（前提要设置交换机持久化）、到达持久化的队列（前提要设置队列持久化）</span></u>**，这样即使消息中间件发生了宕机，我们将消息中间件重启后也不会出现消息丢失的问题，还存在于消息队列中。</p>
-<ul>
-<li><strong>MQ 自动应答机制导致的消息丢失</strong>（文中使用的是六大特性机制中的**<u><span style='color:red'>消费确认机制</span></u>**）</li>
-</ul>
-<p>消息中间件（如 RabbitMQ）<strong>默认是开启消息自动应答机制</strong>，当消费端接收了消息会告诉MQ消息已接收，消息中间件就会删除这个持久化的消息。</p>
-<p>但在消费端执行的过程中，很可能因为执行异常导致流程中断，那这时候消息中间件中就没有这个数据了，进而会导致消息丢失。因此你要**<u><span style='color:red'>采取编程的方式手动发送应答，也就是当优惠券系统执行业务成功之后，消息中间件才能删除这条持久化消息</span></u><strong>。<br>这个知识点很容易被忽略掉，但却很重要，会让面试官认为你切切实实的做过，另外还有一个高频的问题，就是在大促的时候，瞬时流量剧增，很多没能及时消费的消息积压在 MQ 队列中，</strong>这个问题如何解决呢？**</p>
-<ul>
-<li><strong>高并发场景下的消息积压导致消息丢失</strong></li>
-</ul>
-<p>分布式部署环境基于网络进行通信，而在网络通信的过程中，上下游可能因为各种原因而导致消息丢失。<strong>比如优惠券系统由于流量过大而触发限流（六大特性机制中的<u><span style='color:red'>消费端限流机制</span></u>），不能保证事件消息能够被及时地消费，这个消息就会被消息队列不断地重试（此处重试应该是消息已经到达队列，队列重试让消费端接受，不是订单系统的定时任务重试），最后可能由于超过了最大重试次数而被丢弃到死信队列中</strong>。<br>但实际上，你需要人工干预处理移入死信队列的消息，于是在这种场景下，事件消息大概率会被丢弃。而这个问题源于订单系统作为事件的生产者进行消息投递后，无法感知它下游（即优惠券系统）的所有操作，那么优惠券系统作为事件的消费者，是消费成功还是消费失败，订单系统并不知道。</p>
-<h6 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h6><p>解决方案就是上述<strong>实现原理</strong>，可以参考<strong>学成在线-day19-防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）</strong>的应用实例。</p>
-<p>如果让订单知道消费执行结果的响应，即使出现了消息丢失的情况，订单系统也还是可以通过<strong>定时任务扫描</strong>的方式，将未完成的消息重新投递来进行消息补偿。**这是基于消息队列实现分布式事务的关键，是一种<u><span style='color:red'>双向消息确认的机制</span></u>**。<br>那么如何落地实现呢？你可以先让订单系统把要发送的消息持久化到本地数据库里，然后将这条消息记录的状态设置为代发送，紧接着订单系统再投递消息到消息队列，优惠券系统消费成功后，也会向消息队列发送一个通知消息。当订单系统接收到这条通知消息后，再把本地持久化的这条消息的状态设置为完成。</p>
-<img src="https://s0.lgstatic.com/i/image2/M01/05/43/Cip5yF_-epGAWFi1AAE-yrH59GA499.png" alt="11.png" data-nodeid="119894">
-
-<p>这样做后，即使最终 MQ 出现了消息丢失，也可以通过定时任务从订单系统的本地数据库中扫描出一段时间内未完成的消息（此方案可以解决<strong>高并发场景下的消息积压导致消息丢失</strong>，也可以解决<strong>消息中间件发生宕机</strong>、<strong>MQ 自动应答机制导致的消息丢失</strong>（但持久化的消息在进入队列前会被写到磁盘，这个过程比写到内存慢得多，所以会严重的影响性能，可能导致消息的吞吐量降低10倍不止。所以，在做消息持久化前，一定要认真考虑性能和需求之间的平衡关系，可以考虑摒弃原先<strong>消息中间件发生宕机</strong>、<strong>MQ 自动应答机制导致的消息丢失</strong>时的消息持久化方案。）），进行重新投递，最终保证订单系统和优惠券系统的最终事务一致性。</p>
-<p><u><span style='color:red'><strong>注意</strong></span></u>：<strong>六大特性机制</strong>中的<u><span style='color:red'><strong>发送端确认机制</strong>、<strong>消息返回机制</strong>、<strong>消息确认机制</strong></span></u>可以一定程度的防止消息丢失</p>
-<h5 id="解决完“如何确保消息不会丢失？”之后，“怎么解决消息被重复消费的问题？”"><a href="#解决完“如何确保消息不会丢失？”之后，“怎么解决消息被重复消费的问题？”" class="headerlink" title="解决完“如何确保消息不会丢失？”之后，“怎么解决消息被重复消费的问题？”"></a><strong>解决完“如何确保消息不会丢失？”之后，“怎么解决消息被重复消费的问题？”</strong></h5><p>比如：在消息消费的过程中，如果出现失败的情况，通过补偿的机制发送方会执行重试，重试的过程就有可能产生重复的消息，那么如何解决这个问题？</p>
-<h6 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h6><p><strong>解决方案</strong>：也是上述<strong>实现原理</strong>，可以参考<strong>学成在线-day19-防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）</strong>的应用实例。</p>
-<p>1，上述是在生产端添加本地消息表，并结合乐观锁保证定时任务扫描时不重复发送消息，也就不会发生重复消费。</p>
-<p>2，也可以为了多重保险，在消费端添加一个本地历史消息表，用接收过来的任务ID作为唯一索引，重复向消息表插入同一任务ID的数据就会失败，同样不会重复消费消息（注意就算查询到历史消息表中数据已存在时，也要向MQ发送完成任务的消息，好让生产端修改消息表状态为已完成或者删除消息表，否则重试机制会一直发送重复任务）。</p>
-<p>3，生产端接收到消费端发来的完成任务消息后，如果生产端需要先添加消息表到本地历史消息表，再删除消息表，也要考虑幂等性（因为涉及插入和修改表的操作都可能有幂等性问题），但是重复删除消息表会失败，本地消息表和消息表在一个事务中，会回滚保证了幂等性，也就不需要做额外操作。</p>
-<h5 id="消费积压"><a href="#消费积压" class="headerlink" title="消费积压"></a>消费积压</h5><p>因为消息发送之后才会出现积压的问题，所以和消息生产端没有关系，又因为绝大部分的消息队列单节点都能达到每秒钟几万的处理能力，相对于业务逻辑来说，性能不会出现在中间件的消息存储上面。毫无疑问，出问题的肯定是消息消费阶段，那么从消费端入手，如何回答呢？</p>
-<p><strong>如果</strong>是线上突发问题，要临时扩容，增加消费端的数量，与此同时，降级一些非核心的业务。通过扩容和降级承担流量，这是为了表明你对应急问题的处理能力。<br><strong>其次</strong>，才是排查解决异常问题，如通过监控，日志等手段分析是否消费端的业务逻辑代码出现了问题，优化消费端的业务处理逻辑。<br><strong>最后</strong>，如果是消费端的处理能力不足，可以通过水平扩容来提供消费端的并发处理能力，但这里有一个考点需要特别注意， 那就是在扩容消费者的实例数的同时，必须同步扩容主题 Topic 的分区数量，确保消费者的实例数和分区数相等。如果消费者的实例数超过了分区数，由于分区是单线程消费，所以这样的扩容就没有效果。（感觉和<u><span style='color:red'><strong>消息过期机制、死信队列</strong></span></u>有点类似，死信队列是增加消费端和队列，死信消息转移到死信队列）</p>
-<p><u><span style='color:red'><strong>注意</strong></span></u>：个人感觉<strong>六大特性机制</strong>中的<u><span style='color:red'><strong>消费端限流机制</strong></span></u>会导致<strong>消费积压</strong>问题，而<u><span style='color:red'><strong>消息过期机制</strong>、<strong>死信队列</strong></span></u>可以一定程度的防止消息丢失。</p>
-<h2 id="幂等性（消息幂等和接口幂等）"><a href="#幂等性（消息幂等和接口幂等）" class="headerlink" title="幂等性（消息幂等和接口幂等）"></a>幂等性（消息幂等和接口幂等）</h2><h3 id="业务上解决幂等性"><a href="#业务上解决幂等性" class="headerlink" title="业务上解决幂等性"></a>业务上解决幂等性</h3><h4 id="利用数据库进行去重（唯一索引）"><a href="#利用数据库进行去重（唯一索引）" class="headerlink" title="利用数据库进行去重（唯一索引）"></a>利用数据库进行去重（唯一索引）</h4><p>业务上的幂等操作可以添加一个过滤的数据库，比如设置一个去重表，也可以在数据库中通过唯一索引来去重。<br>举一个例子，现在要根据订单流转的消息在数据库中写一张订单 Log 表，我们可以把订单 ID 和修改时间戳做一个唯一索引进行约束。<br>当消费端消费消息出现重复投递时，会多次去订单 Log 表中进行写入，由于我们添加了唯一索引，除了第一条之外，后面的都会失败，这就从业务上保证了幂等，即使消费多次，也不会影响最终的数据结果。</p>
-<h4 id="设置全局唯一消息-ID-或者任务-ID（redis设置key）（redis分布式锁也可以）"><a href="#设置全局唯一消息-ID-或者任务-ID（redis设置key）（redis分布式锁也可以）" class="headerlink" title="设置全局唯一消息 ID 或者任务 ID（redis设置key）（redis分布式锁也可以）"></a>设置全局唯一消息 ID 或者任务 ID（redis设置key）（redis分布式锁也可以）</h4><p>还记得我们在第 15 课时「分布式调用链跟踪」中，提到的调用链 ID 吗？调用链 ID 也可以应用在这里。我们在消息投递时，给每条业务消息附加一个唯一的消息 ID，然后就可以在消费端利用类似分布式锁的机制，实现唯一性的消费。<br>还是用上面记录订单状态流转消息的例子，我们在每条消息中添加一个唯一 ID，消息被消费后，在缓存中设置一个 Key 为对应的唯一 ID（使用incr原子操作判断是否&lt;&#x3D;1或者直接判断是否有这个key），代表数据已经被消费，当其他的消费端去消费时，就可以根据这条记录，来判断是否已经处理过。</p>
-<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>先来看一下消息队列的两种基础模型，也就是<strong>点对点</strong>和<strong>发布订阅</strong>方式。</p>
-<p>RabbitMQ是基于AMQP协议实现的。</p>
-<p data-nodeid="63701">和 JMS 一样，AMQP 也定义了几种不同的消息模型，包括 direct exchange、topic change、headers exchange、system exchange 等。其中 direct exchange 可以类比点对点，其他的模型可以类比发布订阅，这里不做展开介绍了，具体可参考 AMPQ 的其他资料查阅。</p>
-<h4 data-nodeid="63702">点到点模型</h4>
-<p data-nodeid="66328">在点对点模型下，生产者向一个特定的队列发布消息，消费者从该队列中读取消息，每条消息只会被一个消费者处理。</p>
-<p data-nodeid="66329" class=""><img src="https://s0.lgstatic.com/i/image/M00/2E/12/Ciqc1F8EUvqAayF0AAAzEeraHJI842.png" alt="Drawing 3.png" data-nodeid="66333"></p>
-
-<h4 data-nodeid="63706">发布/订阅模型</h4>
-<p data-nodeid="66986">大部分人在浏览资讯网站时会订阅喜欢的频道，比如人文社科，或者娱乐新闻，消息队列的发布订阅也是这种机制。在发布订阅模型中，消费者通过一个 Topic 来订阅消息，生产者将消息发布到指定的队列中。如果存在多个消费者，那么一条消息就会被多个消费者都消费一次。</p>
-<p data-nodeid="66987" class=""><img src="https://s0.lgstatic.com/i/image/M00/2E/12/Ciqc1F8EUwOAO103AACu31NRT3E753.png" alt="Drawing 5.png" data-nodeid="66991"></p>
-
-<p>交换机类型：direct exchange、fanout exchange、topic exchange、headers exchange（前三个是常用的交换机类型）</p>
-<blockquote>
-<p><strong>direct exchange</strong>：对应的Routing的工作模式</p>
-</blockquote>
-<blockquote>
-<p><strong>fanout exchange</strong>：对应的publish&#x2F;subscribe的工作模式</p>
-</blockquote>
-<blockquote>
-<p><strong>topic exchange</strong>：对应的topics的工作模式</p>
-</blockquote>
-<blockquote>
-<p><strong>headers exchange</strong>：对应的headers的工作模式</p>
-</blockquote>
-<p>消费者要声明接收消息的队列，并通过routingkey绑定到交换机上。生产者不需要关注队列的声明，只需要发送时指定消费者声明的routingkey即可。</p>
-<p><strong>注意</strong>：消息队列 RabbitMQ 中，实现的就是点对点的消息传输模式。RabbitMQ 是 AMQP 模型的典型实现。Kafka 和 RocketMQ 实现的都是以发布订阅模式为主。</p>
-<p><strong>RabbitMQ控制台</strong></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011114623279.png" alt="image-20211011114623279"></p>
-<h3 id="要考虑的问题（六大特性机制）"><a href="#要考虑的问题（六大特性机制）" class="headerlink" title="要考虑的问题（六大特性机制）"></a><strong>要考虑的问题</strong>（六大特性机制）</h3><ul>
-<li>消息真的发出去了吗？</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211010233650105.png" alt="image-20211010233650105"></p>
-<ul>
-<li>消息真的被路由了吗？</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211010233754653.png" alt="image-20211010233754653"></p>
-<ul>
-<li>消费端处理的过来吗？</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211010233910946.png" alt="image-20211010233910946"></p>
-<ul>
-<li>消费端处理异常怎么办？</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211010234044886.png" alt="image-20211010234044886"></p>
-<ul>
-<li>队列爆满怎么办？</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211010234325046.png" alt="image-20211010234325046"></p>
-<ul>
-<li>如何转移过期消息？</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211010234431463.png" alt="image-20211010234431463"></p>
-<h3 id="如何保证消息可靠性（六大特性机制）"><a href="#如何保证消息可靠性（六大特性机制）" class="headerlink" title="如何保证消息可靠性（六大特性机制）"></a>如何保证消息可靠性（六大特性机制）</h3><ul>
-<li>发送方</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011001302006.png" alt="image-20211011001302006"></p>
-<ul>
-<li>消费方</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011001426160.png" alt="image-20211011001426160"></p>
-<ul>
-<li>RabbitMQ自身</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011001412518.png" alt="image-20211011001412518"></p>
-<h3 id="六大特性机制"><a href="#六大特性机制" class="headerlink" title="六大特性机制"></a>六大特性机制</h3><ul>
-<li>发送端确认机制</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011002456138.png" alt="image-20211011002456138"></p>
-<ul>
-<li>消息返回机制</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011005212991.png" alt="image-20211011005212991"></p>
-<ul>
-<li>消费端确认机制</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011114935073.png" alt="image-20211011114935073"></p>
-<ul>
-<li>消费端限流机制</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011115049426.png" alt="image-20211011115049426"></p>
-<p>消费端限流机制（QoS）防止消费端服务崩溃是一方面，更主要的是为了添加新的集群消费服务器时（横向扩展），能让添加的服务器分担积压在MQ的消息。因为启动了QoS后，超出prefetchCount限制的积压消息会是Ready（准备发送）状态，其他集群服务器就可以接收这些消息，不启动QoS，积压的消息全都会发送给消费端变成Unacked（未被确认）状态，此时其他消费端就抢不到这些消息（因为已经发送给原来的消费端了），也就无发分担原有消费端压力</p>
-<ul>
-<li>消费过期机制</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011143918919.png" alt="image-20211011143918919"></p>
-<p>消息过期时间（消息TTL）在生产端发送时在消息中设置。</p>
-<p>队列中所有消息的过期时间（队列TTL）在消费端声明队列时设置。</p>
-<ul>
-<li>死信队列</li>
-</ul>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011160042464.png" alt="image-20211011160042464"></p>
-<p>死信队列：设置了“x-dead-letter-exchange”参数，被转发给其他交换机并路由给其他队列的队列。</p>
-<p>转发交换机：转发死信队列的消息。</p>
-<p>接收队列：接收转发交换机路由的消息。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><strong>注意：重回队列一般不建议使用</strong></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011161241415.png" alt="image-20211011161241415"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211011161256643.png" alt="image-20211011161256643"></p>
-<h3 id="备份交换机"><a href="#备份交换机" class="headerlink" title="备份交换机"></a>备份交换机</h3><p>​		有了 mandatory 参数和回退消息，我们获得了对无法投递消息的感知能力，有机会在生产者的消息 无法被投递时发现并处理。但有时候，我们并不知道该如何处理这些无法路由的消息，最多打个日志，然 后触发报警，再来手动处理。而通过日志来处理这些无法路由的消息是很不优雅的做法，特别是当生产者 所在的服务有多台机器的时候，手动复制日志会更加麻烦而且容易出错。而且设置 mandatory 参数会增 加生产者的复杂性，需要添加处理这些被退回的消息的逻辑。如果既不想丢失消息，又不想增加生产者的 复杂性，该怎么做呢？前面在设置死信队列的文章中，我们提到，可以为队列设置死信交换机来存储那些 处理失败的消息，可是这些不可路由消息根本没有机会进入到队列，因此无法使用死信队列来保存消息。 在 RabbitMQ 中，有一种备份交换机的机制存在，可以很好的应对这个问题。什么是备份交换机呢？备份 交换机可以理解为 RabbitMQ 中交换机的“备胎”，当我们为某一个交换机声明一个对应的备份交换机时， 就是为它创建一个备胎，当交换机接收到一条不可路由消息时，将会把这条消息转发到备份交换机中，由 备份交换机来进行转发和处理，通常备份交换机的类型为 Fanout ，这样就能把所有消息都投递到与其绑 定的队列中，然后我们在备份交换机下绑定一个队列，这样所有那些原交换机无法被路由的消息，就会都 进入这个队列了。当然，我们还可以建立一个报警队列，用独立的消费者来进行监测和报警。</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211012191716556.png" alt="image-20211012191716556"></p>
-<p><strong><u><span style='color:red'>注意</span></u><strong>：</strong>备份交换机</strong>和<strong>消费返回机制</strong>一样，是为了防止消息到达交换机后无法路由的队列时，防止<strong>消息丢失</strong>。如果两者同时开启，<strong>备份交换机优先级高</strong>。</p>
-<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211012194941637.png" alt="image-20211012194941637"></p>
-<p><strong>发送端确认机制</strong>、<strong>消费返回机制</strong>、<strong>备份交换机</strong>是交换机和队列出问题时防止<strong>消息丢失</strong>的方案。如果MQ本身宕机了，Broker服务不可用，也就无法使用这些机制，只能在发送端发送消息时，<strong>持久化消息到mysql或redis来防止消息丢失</strong>。</p>
-<h3 id="延迟队列"><a href="#延迟队列" class="headerlink" title="延迟队列"></a>延迟队列</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>延时队列,队列内部是有序的，最重要的特性就体现在它的延时属性上，延时队列中的元素是希望在指定时间到了以后或之前取出和处理，简单来说，延时队列就是用来存放需要在指定时间被处理的 元素的队列。（原理：消息TTL过期被转移到死信队列）</p>
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>1.订单在十分钟之内未支付则自动取消 </p>
-<p>2.新创建的店铺，如果在十天内都没有上传过商品，则自动发送消息提醒。 </p>
-<p>3.用户注册成功后，如果三天内没有登陆则进行短信提醒。 </p>
-<p>4.用户发起退款，如果三天内没有得到处理则通知相关运营人员。 </p>
-<p>5.预定会议后，需要在预定的时间点前十分钟通知各个与会人员参加会议</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211012173414277.png" alt="image-20211012173414277"></p>
-<h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h4><p>RabbitMQ 只会检查第一个消息是否过期，如果过期则丢到死信队列， 如果第一个消息的延时时长很长，而第二个消息的延时时长很短，第二个消息并不会优先得到执行（说白了消息是要排队的，先进先出）。</p>
-<h5 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h5><h3 id="如何保证顺序消费"><a href="#如何保证顺序消费" class="headerlink" title="如何保证顺序消费"></a>如何保证顺序消费</h3><h2 id="从RabbitMQ看设计模式"><a href="#从RabbitMQ看设计模式" class="headerlink" title="从RabbitMQ看设计模式"></a>从RabbitMQ看设计模式</h2><p>RabbitAdmin实现了AppplicationContextAware、InitializingBean接口。spring容器初始化RabbitAdmin后，调用InitializingBean的afterPropertiesSet()方法，在该方法内有一个监听器方法并传入一个匿名内部类实例，监听到有新的MQ连接时，回调这个内部类实例的方法，查找的spring容器创建的交换机、队列、绑定关系的Bean，并声明交换机、队列、绑定关系。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -485,7 +275,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Zixuan">
+      <meta itemprop="name" content="Wang Baibai">
       <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
@@ -509,7 +299,21 @@
               <time title="创建时间：2022-07-23 18:23:17 / 修改时间：18:41:26" itemprop="dateCreated datePublished" datetime="2022-07-23T18:23:17+08:00">2022-07-23</time>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -520,134 +324,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="重置Root密码"><a href="#重置Root密码" class="headerlink" title="重置Root密码"></a><strong><u><span style='color:red'>重置Root密码</span></u></strong></h2><p>方法一:<br> 在my.ini的[mysqld]字段加入：<br>skip-grant-tables<br>重启mysql服务，这时的mysql不需要密码即可登录数据库<br> 然后进入mysql<br>mysql&gt;use mysql;<br> mysql&gt;更新 update user set password&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;(mysql5.7为：update user set authentication_string&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;)<br>mysql&gt;flush privileges;<br> 运行之后最后去掉my.ini中的skip-grant-tables，重启mysql即可。</p>
+          <h2 id="重置Root密码"><a href="#重置Root密码" class="headerlink" title="重置Root密码"></a><strong><u><span style="color:red">重置Root密码</span></u></strong></h2><p>方法一:<br> 在my.ini的[mysqld]字段加入：<br>skip-grant-tables<br>重启mysql服务，这时的mysql不需要密码即可登录数据库<br> 然后进入mysql<br>mysql&gt;use mysql;<br> mysql&gt;更新 update user set password&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;(mysql5.7为：update user set authentication_string&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;)<br>mysql&gt;flush privileges;<br> 运行之后最后去掉my.ini中的skip-grant-tables，重启mysql即可。</p>
 <p>如果提示：You must reset your password using ALTER USER statement before executing this statement。</p>
 <p>进入mysql，执行命令：alter user user() identified by “新密码”;</p>
 <p>方法二:（若新的mysql版本只有mysqld，用mysqld代替mysqld-nt即可）<br> 不使用修改my.ini重启服务的方法，通过非服务方式加skip-grant-tables运行mysql来修改mysql密码<br> 停止mysql服务<br> 打开命令行窗口，在bin目录下使用mysqld-nt.exe启动，即在命令行窗口执行: mysqld-nt –skip-grant-tables<br> 然后另外打开一个命令行窗口，登录mysql，此时无需输入mysql密码即可进入。<br> 按以上方法修改好密码后,关闭命令行运行mysql的那个窗口，此时即关闭了mysql，如果发现mysql仍在运行<br> 的话可以结束掉对应进程来关闭。<br> 启动mysql服务</p>
-<h2 id="备份、恢复数据库"><a href="#备份、恢复数据库" class="headerlink" title="备份、恢复数据库"></a><strong><u><span style='color:red'>备份、恢复数据库</span></u></strong></h2><p>备份：</p>
-<p>–cmd&gt; mysqldump -u用户名 -p –database 数据库名 &gt; 文件名.sql &#x2F;&#x2F; 在cmd下使用</p>
-<!--database可省略，两者之间的差别在于不使用 --databases 选项，则备份输出信息中不会包含CREATE DATABASE或USE DATABASE语句。不使用 --databases 选项备份的数据文件，在后期进行数据还原操作时，如果该数据库不存在，必须先创建该数据库。-->
-
-<p>恢复：</p>
-<p>–source 文件名.sql  &#x2F;&#x2F; 在mysql内部使用</p>
-<!--如果备份时命令没加--database,恢复时要先执行命令--use 数据库名。如果数据库不存在，必须先创建数据库，恢复时先执行命令--use 数据库名，或者备份时命令加上--database（恢复时不用执行命令--use 数据库名）-->
-
-<p>–mysql –u用户名 -p 数据库名 &lt; 文件名.sql &#x2F;&#x2F; 在cmd下使用</p>
-<!--如果备份时命令没加--database,恢复命令的”数据库名“不能省略。如果数据库不存在，必须先创建数据库（恢复命令的”数据库名“不能省略），或者备份时命令加上--database（恢复命令的”数据库名“可以省略）-->
-
-
-
-<h2 id="mysql登录连接参数详解"><a href="#mysql登录连接参数详解" class="headerlink" title="mysql登录连接参数详解"></a><strong><u><span style='color:red'>mysql登录连接参数详解</span></u></strong></h2><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql [options] [database]</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">参数 ： </span><br><span class="line">	-u, --user=name			指定用户名</span><br><span class="line">	-p, --password[=name]	指定密码</span><br><span class="line">	-h, --host=name			指定要连接的服务器IP或域名</span><br><span class="line">	-P, --port=#			指定连接端口</span><br><span class="line"></span><br><span class="line">示例 ：</span><br><span class="line">	mysql -h 127.0.0.1 -P 3306 -u root -p</span><br><span class="line">	</span><br><span class="line">	mysql -h127.0.0.1 -P3306 -uroot -p2143</span><br></pre></td></tr></table></figure>
-
-<p>​	</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210322220017115.png" alt="image-20210322220017115"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210322220448763.png" alt="image-20210322220448763"></p>
-<h2 id="mysql的锁机制——记录锁、间隙锁、临键锁"><a href="#mysql的锁机制——记录锁、间隙锁、临键锁" class="headerlink" title="mysql的锁机制——记录锁、间隙锁、临键锁"></a><strong><u><span style='color:red'>mysql的锁机制——记录锁、间隙锁、临键锁</span></u></strong></h2><p>innoDB支持三种行锁定方式：</p>
-<ul>
-<li>行锁（Record Lock）：锁直接加在索引记录上面（无索引项时演变成表锁）。</li>
-<li>间隙锁（Gap Lock）：锁定索引记录间隙，确保索引记录的间隙不变。间隙锁是针对事务隔离级别为可重复读或以上级别的。</li>
-<li>Next-Key Lock ：行锁和间隙锁组合起来就是 Next-Key Lock。</li>
-</ul>
-<p>innoDB默认的隔离级别是可重复读(Repeatable Read)，并且会以Next-Key Lock的方式对数据行进行加锁。Next-Key Lock是行锁和间隙锁的组合，当InnoDB扫描索引记录的时候，会首先对索引记录加上行锁（Record Lock），再对索引记录两边的间隙加上间隙锁（Gap Lock）。加上间隙锁之后，其他事务就不能在这个间隙修改或者插入记录。</p>
-<p>当查询的索引含有唯一属性（唯一索引，主键索引）时，Innodb存储引擎会对next-key lock进行优化，将其降为record lock,即仅锁住索引本身，而不是范围。</p>
-<p>间隙锁只有在事务隔离级别 RR 中才会产生；</p>
-<h3 id="何时使用行锁，何时产生间隙锁"><a href="#何时使用行锁，何时产生间隙锁" class="headerlink" title="何时使用行锁，何时产生间隙锁"></a>何时使用行锁，何时产生间隙锁</h3><ol>
-<li><p>只使用唯一索引查询，并且只锁定一条记录时，innoDB会使用行锁**<span style='color:red'>(即Innodb存储引擎会对next-key lock进行优化，将其降为record lock,即仅锁住索引本身，而不是范围)</span>**。</p>
-</li>
-<li><p>只使用唯一索引查询，但是检索条件是范围检索，或者是唯一检索然而检索结果不存在（试图锁住不存在的数据）时，会产生 Next-Key Lock。</p>
-</li>
-<li><p>使用普通索引检索时，不管是何种查询，只要加锁，都会产生间隙锁，这跟唯一索引不一样。</p>
-</li>
-<li><p>同时使用唯一索引和普通索引时，由于数据行是优先根据普通索引排序，再根据唯一索引排序，所以也会产生间隙锁**<span style='color:red'>(如果普通索引和间隙界限的普通索引相同无法判断是否在间隙内，则可以根据唯一索引和间隙界限的普通索引排序来判断是否在间隙内)</span>**。</p>
-</li>
-</ol>
-<p><strong>以上2和3中在查询条件范围内已存在的某一或某些行的索引项同时会被加上记录锁，在查询条件范围内但不存在的间隙内会加上间隙锁</strong></p>
-<h3 id="mysql的innodb引擎在默认RR-Repeatable-Read-级别下如何防止幻读"><a href="#mysql的innodb引擎在默认RR-Repeatable-Read-级别下如何防止幻读" class="headerlink" title="mysql的innodb引擎在默认RR(Repeatable Read)级别下如何防止幻读"></a>mysql的innodb引擎在默认RR(Repeatable Read)级别下如何防止幻读</h3><p>在快照读（snapshot read）的情况下，MySQL通过MVCC（多版本并发控制）来避免幻读。</p>
-<blockquote>
-<p>快照读，读取的是记录的可见版本 (有可能是历史版本)，不用加锁。主要应用于无需加锁的普通查询（select）操作。</p>
-</blockquote>
-<p>在当前读（current read）的情况下，MySQL通过next-key lock来避免幻读。</p>
-<blockquote>
-<p>当前读，读取的是记录的最新版本，并且会对当前记录加锁，防止其他事务发修改这条记录。加行共享锁（SELECT … LOCK IN SHARE MODE ）、加行排他锁（SELECT … FOR UPDATE &#x2F; INSERT &#x2F; UPDATE &#x2F; DELETE）的操作都会用到当前读。行锁可参看 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://blog.csdn.net/zmflying8177/article/details/104826872">MySQL行锁</a>。</p>
-</blockquote>
-<p>MVCC只 在 READ COMMITTED 和 REPEATABLE READ 两个隔离级别下⼯作</p>
-<p><strong><span style='color:red'>MYSQL锁机制参考：【<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/48269420%E3%80%91%E3%80%81%E3%80%90https://www.jianshu.com/p/d5c2613cbb81%E3%80%91">https://zhuanlan.zhihu.com/p/48269420】、【https://www.jianshu.com/p/d5c2613cbb81】</a></span></strong></p>
-<h3 id="mysql死锁"><a href="#mysql死锁" class="headerlink" title="mysql死锁"></a>mysql死锁</h3><p>参考：《《深入浅出MySQL 数据库开发、优化与管理维护（第2版）》.pdf》的20.3.9小节</p>
-<blockquote>
-<p>死锁：MyISAM引擎不会发生死锁，InnodDB会发生死锁。不同于MyISAM总是一次性获得所需的全部锁，InnoDB的锁是逐步获得的，当两个事务都需要获得对方持有的锁，导致双方都在等待，这就产生了死锁</p>
-</blockquote>
-<ul>
-<li>如何防止死锁</li>
-</ul>
-<p><img src="/img/image-20210823175900916.png" alt="image-20210823175900916"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210823180403222.png" alt="image-20210823180403222"></p>
-<p><img src="/img/image-20210823180456237.png" alt="image-20210823180456237"></p>
-<h2 id="高并发数据优化方案"><a href="#高并发数据优化方案" class="headerlink" title="高并发数据优化方案"></a>高并发数据优化方案</h2><h3 id="读多写少，如何优化数据查询方案？"><a href="#读多写少，如何优化数据查询方案？" class="headerlink" title="读多写少，如何优化数据查询方案？"></a>读多写少，如何优化数据查询方案？</h3><h4 id="mysql主从复制"><a href="#mysql主从复制" class="headerlink" title="mysql主从复制"></a>mysql主从复制</h4><p>读多写少的时候，你要考虑优化数据库来抗住高查询请求，首先要做的就是区分读写流量区。MySQL 做读写分离的前提，是把 MySQL 集群拆分成“主 + 从”结构的数据集群，这样才能实现程序上的读写分离，并且 MySQL 集群的主库、从库的数据是通过主从复制实现同步的。</p>
-<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211009173950037.png" alt="image-20211009173950037"></p>
-<img src="https://s0.lgstatic.com/i/image6/M00/01/18/CioPOWAbM7eAJvyLAAGMifLwArU490.png" alt="2021-02-04 (1).png" data-nodeid="15772">
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">主从复制过程</span><br><span class="line">但在面试中你不能简单地只讲这几个阶段，要尽可能详细地说明主库和从库的数据同步过程，为的是让面试官感受到你技术的扎实程度（详细过程如下）。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MySQL 主库在收到客户端提交事务的请求之后，会先写入 binlog，再提交事务，更新存储引擎中的数据，事务提交完成后，返回给客户端“操作成功”的响应。</span><br><span class="line"></span><br><span class="line">从库会创建一个专门的 I/O 线程，连接主库的 log dump 线程，来接收主库的 binlog 日志，再把 binlog 信息写入 relay log 的中继日志里，再返回给主库“复制成功”的响应。</span><br><span class="line"></span><br><span class="line">从库会创建一个用于回放 binlog 的线程，去读 relay log 中继日志，然后回放 binlog 更新存储引擎中的数据，最终实现主从的数据一致性。</span><br></pre></td></tr></table></figure>
-
-<h5 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h5><p>而这时，面试官一般会追问你“<strong>MySQL 主从复制还有哪些模型？”</strong>主要有三种。</p>
-<p>同步复制：事务线程要等待所有从库的复制成功响应。</p>
-<p>异步复制：事务线程完全不等待从库的复制成功响应。</p>
-<p>半同步复制：MySQL 5.7 版本之后增加的一种复制方式，介于两者之间，事务线程不用等待所有的从库复制成功响应，只要一部分复制成功响应回来就行，比如一主二从的集群，只要数据成功复制到任意一个从库上，主库的事务线程就可以返回给客户端。</p>
-<p>这种半同步复制的方式，兼顾了异步复制和同步复制的优点，即使出现主库宕机，至少还有一个从库有最新的数据，不存在数据丢失的风险。</p>
-<h4 id="解决主从复制延迟"><a href="#解决主从复制延迟" class="headerlink" title="解决主从复制延迟"></a>解决主从复制延迟</h4><p data-nodeid="15654">我们来结合实际案例设计一个主从复制延迟的解决方案。</p>
-<p data-nodeid="15655">在电商平台，每次用户发布商品评论时，都会先调用评论审核，目的是对用户发布的商品评论进行如言论监控、图片鉴黄等操作。</p>
-<p data-nodeid="15656">评论在更新完主库后，商品发布模块会异步调用审核模块，并把评论 ID 传递给审核模块，然后再由评论审核模块用评论 ID 查询从库中获取到完整的评论信息。此时如果主从数据库存在延迟，在从库中就会获取不到评论信息，整个流程就会出现异常。</p>
-<p data-nodeid="15657"><img src="https://s0.lgstatic.com/i/image6/M00/01/1A/Cgp9HWAbNB2ACf3mAAGLpR_O2fo928.png" alt="2021-02-04 (2).png" data-nodeid="15824"></p>
-<div data-nodeid="15658"><p style="text-align:center">主从延迟影响评论读取的实时性</p></div>
-<p data-nodeid="15659">这是主从复制延迟导致的查询异常，解决思路有很多，我提供给你几个方案。</p>
-<ul data-nodeid="15660">
-<li data-nodeid="15661">
-<p data-nodeid="15662"><strong data-nodeid="15829">使用数据冗余</strong></p>
-</li>
-</ul>
-<p data-nodeid="15663">可以在异步调用审核模块时，不仅仅发送商品 ID，而是发送审核模块需要的所有评论信息，借此避免在从库中重新查询数据（这个方案简单易实现，推荐你选择）。但你要注意每次调用的参数大小，过大的消息会占用网络带宽和通信时间。</p>
-<ul data-nodeid="15664">
-<li data-nodeid="15665">
-<p data-nodeid="15666"><strong data-nodeid="15834">使用缓存解决</strong></p>
-</li>
-</ul>
-<p data-nodeid="15667">可以在写入数据主库的同时，把评论数据写到 Redis 缓存里，这样其他线程再获取评论信息时会优先查询缓存，也可以保证数据的一致性。</p>
-<p data-nodeid="16425">不过这种方式会带来缓存和数据库的一致性问题，比如两个线程同时更新数据，操作步骤如下：</p>
-<p data-nodeid="16426" class=""><img src="https://s0.lgstatic.com/i/image6/M00/01/18/CioPOWAbNfuAcuHnAAHZwTbXvGA787.png" alt="2021-02-04 (5).png" data-nodeid="16434"></p>
-
-<p data-nodeid="15701">线程 A 先更新数据库为 100，此时线程 B 把数据库和缓存中的数据都更新成了 200，然后线程 A 又把缓存更新为 100，这样数据库中的值 200 和缓存中的值 100 就不一致了，解决这个问题，你可以参考 06 讲。</p>
-<p data-nodeid="15702">总的来说，通过缓存解决 MySQL 主从复制延迟时，会出现数据库与缓存数据不一致的情况。虽然它和“使用数据冗余”的方案相比并不优雅，但我还是建议你在面试中做一下补充，这样可以引出更多的技术知识，展现自己与其他人的差异。</p>
-<ul data-nodeid="15703">
-<li data-nodeid="15704">
-<p data-nodeid="15705"><strong data-nodeid="15871">直接查询主库</strong></p>
-</li>
-</ul>
-<p data-nodeid="15706">该方案在使用时一定要谨慎，你要提前明确查询的数据量不大，不然会出现主库写请求锁行，影响读请求的执行，最终对主库造成比较大的压力。</p>
-
-<h3 id="写多读少，如何优化数据存储方案？"><a href="#写多读少，如何优化数据存储方案？" class="headerlink" title="写多读少，如何优化数据存储方案？"></a>写多读少，如何优化数据存储方案？</h3><blockquote>
-<p>公司现有业务不断发展，流量剧增，交易数量突破了千万订单，但是订单数据还是单表存储，主从分离后，虽然减少了缓解读请求的压力，但随着写入压力增加，数据库的查询和写入性能都在下降，这时你要怎么设计架构？</p>
-</blockquote>
-<p>要想解决该问题，你可以对存储数据做分片，常见的方式就是对数据库做“分库分表”，在实现上有三种策略：垂直拆分、水平拆分、垂直水平拆分。</p>
-<h4 id="如何确定分库还是分表？"><a href="#如何确定分库还是分表？" class="headerlink" title="如何确定分库还是分表？"></a>如何确定分库还是分表？</h4><p>针对“如何确定分库还是分表？”的问题，你要结合具体的场景。</p>
-<p><strong>何时分表</strong></p>
-<p>当数据量过大造成事务执行缓慢时，就要考虑分表，因为减少每次查询数据总量是解决数据查询缓慢的主要原因。你可能会问：“查询可以通过主从分离或缓存来解决，为什么还要分表？”但这里的查询是指事务中的查询和更新操作。</p>
-<p><strong>何时分库</strong></p>
-<p>为了应对高并发，一个数据库实例撑不住，即单库的性能无法满足高并发的要求，就把并发请求分散到多个实例中去（这种应对高并发的思路我之前也说过）。</p>
-<p>总的来说，分库分表使用的场景不一样： 分表是因为数据量比较大，导致事务执行缓慢；分库是因为单库的性能无法满足要求。</p>
-<h4 id="如何选择分片策略？"><a href="#如何选择分片策略？" class="headerlink" title="如何选择分片策略？"></a>如何选择分片策略？</h4><p>在明确分库分表的场景后，面试官一般会追问“怎么进行分片？”换句话说就是按照什么分片策略对数据库进行分片？</p>
-<p><strong>垂直拆分</strong></p>
-<p><strong>水平拆分</strong></p>
-<p>1，哈希取模分片</p>
-<p>2，范围分片</p>
-<p>3，垂直水平拆分</p>
-<h2 id="复杂sql"><a href="#复杂sql" class="headerlink" title="复杂sql"></a>复杂sql</h2><p>多表联合更新</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update t_truck_info a,t_temp_license_record b set a.temp_license=b.temp_license,a.temp_license_back_image=b.driving_license_img where a.vin_code = b.vin_code and a.vin_code in (select vin_code from t_waybill where order_no = &#x27;OR00051439&#x27;);</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/23/mysql%E7%AC%94%E8%AE%B0(%E4%B8%AA%E4%BA%BA)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -670,7 +358,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Zixuan">
+      <meta itemprop="name" content="Wang Baibai">
       <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
@@ -694,7 +382,21 @@
               <time title="创建时间：2022-07-23 18:23:08 / 修改时间：18:43:15" itemprop="dateCreated datePublished" datetime="2022-07-23T18:23:08+08:00">2022-07-23</time>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>549</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -714,27 +416,14 @@
 </li>
 </ul>
 <h3 id="二叉排序树（也叫二叉搜索树）"><a href="#二叉排序树（也叫二叉搜索树）" class="headerlink" title="二叉排序树（也叫二叉搜索树）"></a>二叉排序树（也叫二叉搜索树）</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png" alt="image-20211017121948691"></p>
-<p>二叉排序树，中序遍历出来的数据是递增有序的。如果一个是递增数列如：{1，2，3，4，5}，创建二叉树时左子树全为空，更像一个单链表。</p>
-<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170451669.png" alt="image-20211017170451669"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170606509.png" alt="image-20211017170606509"></p>
-<p><img src="/img/image-20211017170716264.png" alt="image-20211017170716264"></p>
-<h3 id="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"><a href="#平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）" class="headerlink" title="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"></a>平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。（和完全二叉树不同，平衡二叉树没说叶子节点在左边或右边一定要连续）</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017122347145.png" alt="image-20211017122347145"></p>
-<h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164634054.png" alt="image-20211017164634054"></p>
-<h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164654839.png" alt="image-20211017164654839"></p>
-<h4 id="左右双旋转"><a href="#左右双旋转" class="headerlink" title="左右双旋转"></a>左右双旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164808945.png" alt="image-20211017164808945"></p>
-<h2 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h2><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>B树，这个B是指Balanced , 平衡的意思，不是指的Binary ，要明确这点.</p>
-<p>B树仍然遵循(BST 二叉排序树)的规则</p>
-<p><img src="/img/image-20211018005242287.png" alt="image-20211018005242287"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018002139673.png" alt="image-20211018002139673"></p>
-<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003234124.png" alt="image-20211018003234124"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003300188.png" alt="image-20211018003300188"></p>
-<h3 id="mysql的B-树"><a href="#mysql的B-树" class="headerlink" title="mysql的B+树"></a>mysql的B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003332890.png" alt="image-20211018003332890"></p>
-<h4 id="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"><a href="#主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）" class="headerlink" title="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"></a>主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018020434517.png" alt="image-20211018020434517"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018022851648.png" alt="image-20211018022851648"></p>
-<h4 id="稠密索引、稀疏索引"><a href="#稠密索引、稀疏索引" class="headerlink" title="稠密索引、稀疏索引"></a>稠密索引、稀疏索引</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024153379.png" alt="image-20211018024153379"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024323135.png" alt="image-20211018024323135"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -757,7 +446,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Zixuan">
+      <meta itemprop="name" content="Wang Baibai">
       <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
@@ -781,7 +470,21 @@
               <time title="创建时间：2022-07-23 18:22:59 / 修改时间：18:41:50" itemprop="dateCreated datePublished" datetime="2022-07-23T18:22:59+08:00">2022-07-23</time>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>56</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -795,9 +498,14 @@
           <h1 id="springmvc参数传递"><a href="#springmvc参数传递" class="headerlink" title="springmvc参数传递"></a>springmvc参数传递</h1><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213100048.png" alt="image-20211109213100048"></p>
 <p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213340566.png" alt="image-20211109213340566"></p>
 <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>设置Content-Type:multipart&#x2F;form-data</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211110095259254.png" alt="image-20211110095259254"></p>
-<p><img src="/img/image-20211110095309699.png" alt="image-20211110095309699"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/23/springmvc%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -820,7 +528,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Zixuan">
+      <meta itemprop="name" content="Wang Baibai">
       <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
@@ -839,12 +547,41 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-07-23 18:22:49 / 修改时间：18:40:10" itemprop="dateCreated datePublished" datetime="2022-07-23T18:22:49+08:00">2022-07-23</time>
+              <time title="创建时间：2022-07-23 18:22:49" itemprop="dateCreated datePublished" datetime="2022-07-23T18:22:49+08:00">2022-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-28 01:31:14" itemprop="dateModified" datetime="2022-07-28T01:31:14+08:00">2022-07-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+                </span>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -858,28 +595,14 @@
           <h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h2><p>volatile和heppens-before规则来保证。</p>
 <p><strong>happens-before 关系的规则和重排序冲突吗？</strong></p>
 <p>答：不冲突。只要重排序后依然符合原来的heppens-before规则，那么这个重排序也会发生，比如，单线程内，语句 1 在语句 2 的前面，所以根据“单线程规则”，语句 1 happens-before 语句 2，但是并不是说语句 1 一定要在语句 2 之前被执行，例如语句 1 修改的是变量 a 的值，而语句 2 的内容和变量 a 无关，那么语句 1 和语句 2 依然有可能被重排序。当然，如果语句 1 修改的是变量 a，而语句 2 正好是去读取变量 a 的值，那么语句 1 就一定会在语句 2 之前执行了。</p>
-<p>happens-before原则包含一系列规则：</p>
-<ol>
-<li><p>单线程规则：即一个线程内必须保证语义串行性；</p>
-</li>
-<li><p>锁规则：即对同一个锁的解锁一定发生在再次加锁之前；</p>
-</li>
-<li><p>volatile 变量规则：对一个 volatile 变量的写操作 happen-before 后面对该变量的读操作；</p>
-</li>
-<li><p>线程启动规则：Thread 对象的 start 方法 happen-before 此线程 run 方法中的每一个操作；</p>
-</li>
-<li><p>线程 join 规则：<br>我们知道 join 可以让线程之间等待，假设线程 A 通过调用 threadB.start() 启动了一个新线程 B，然后调用 threadB.join() ，那么线程 A 将一直等待到线程 B 的 run 方法结束（不考虑中断等特殊情况），然后 join 方法才返回。在 join 方法返回后，线程 A 中的所有后续操作都可以看到线程 B 的 run 方法中执行的所有操作的结果，也就是线程 B 的 run 方法里面的操作 happens-before 线程 A 的 join 之后的语句；</p>
-</li>
-<li><p>线程中断规则：<br>对线程 interrupt 方法的调用 happens-before 检测该线程的中断事件。<br>也就是说，如果一个线程被其他线程 interrupt，那么在检测中断时（比如调用 Thread.interrupted 或者 Thread.isInterrupted 方法）一定能看到此次中断的发生，不会发生检测结果不准的情况。</p>
-</li>
-<li><p>并发工具类的规则：</p>
-<p>线程安全的并发容器（如 HashTable）在 get 某个值时一定能看到在此之前发生的 put 等存入操作的结果。也就是说，线程安全的并发容器的存入操作 happens-before 读取操作。</p>
-<p>信号量（Semaphore）它会释放许可证，也会获取许可证。这里的释放许可证的操作 happens-before 获取许可证的操作，也就是说，如果在获取许可证之前有释放许可证的操作，那么在获取时一定可以看到。</p>
-<p>Future：Future 有一个 get 方法，可以用来获取任务的结果。那么，当 Future 的 get 方法得到结果的时候，一定可以看到之前任务中所有操作的结果，也就是说 Future 任务中的所有操作 happens-before Future 的 get 操作。</p>
-<p>线程池：要想利用线程池，就需要往里面提交任务（Runnable 或者 Callable），这里面也有一个 happens-before 关系的规则，那就是提交任务的操作 happens-before 任务的执行。</p>
-</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/23/JVM/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -902,7 +625,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Zixuan">
+      <meta itemprop="name" content="Wang Baibai">
       <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
@@ -923,10 +646,24 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-07-23 17:38:25 / 修改时间：17:44:06" itemprop="dateCreated datePublished" datetime="2022-07-23T17:38:25+08:00">2022-07-23</time>
+              <time title="创建时间：2022-07-23 17:38:25 / 修改时间：17:44:28" itemprop="dateCreated datePublished" datetime="2022-07-23T17:38:25+08:00">2022-07-23</time>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -961,7 +698,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-      <meta itemprop="name" content="Wang Zixuan">
+      <meta itemprop="name" content="Wang Baibai">
       <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
@@ -984,7 +721,21 @@
               <time title="创建时间：2022-07-23 17:13:14" itemprop="dateCreated datePublished" datetime="2022-07-23T17:13:14+08:00">2022-07-23</time>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>367</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -999,16 +750,14 @@
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/07/23/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1081,9 +830,9 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Wang Zixuan"
+    <img class="site-author-image" itemprop="image" alt="Wang Baibai"
       src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-  <p class="site-author-name" itemprop="name">Wang Zixuan</p>
+  <p class="site-author-name" itemprop="name">Wang Baibai</p>
   <div class="site-description" itemprop="description">受尽苦难而不厌此，乃修罗之道</div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -1095,12 +844,44 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/q2315648899" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;q2315648899" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangzixuan4069@gmail.com" title="E-Mail → mailto:wangzixuan4069@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
       </div>
+
+	  
+	  <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+	  <div class="widget-wrap">
+	  	<div id="myCanvasContainer" class="widget tagcloud">
+	  		<canvas width="250" height="250" id="resCanvas" style="width:100%">
+	  			<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%95%E5%B1%82/" rel="tag">底层</a><span class="tag-list-count">1</span></li></ul>
+	  		</canvas>
+	  	</div>
+	  </div>
+	  
 
     </div>
   </aside>
@@ -1123,10 +904,21 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Wang Zixuan</span>
+  <span class="author" itemprop="copyrightHolder">Wang Baibai</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">21k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">35 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://lib.baomitu.com/canvas-nest.js/1.0.1/canvas-nest.js"></script>
+
 
         
 
@@ -1143,6 +935,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -1162,6 +955,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
