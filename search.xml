@@ -66,6 +66,12 @@
 ]]></content>
   </entry>
   <entry>
+    <title>这是我的第一个博客</title>
+    <url>/2022/07/23/my-first-blog/</url>
+    <content><![CDATA[<p>这是我的第一个博客</p>
+]]></content>
+  </entry>
+  <entry>
     <title>mysql笔记(个人)</title>
     <url>/2022/07/23/mysql%E7%AC%94%E8%AE%B0(%E4%B8%AA%E4%BA%BA)/</url>
     <content><![CDATA[<h2 id="重置Root密码"><a href="#重置Root密码" class="headerlink" title="重置Root密码"></a><strong><u><span style='color:red'>重置Root密码</span></u></strong></h2><p>方法一:<br> 在my.ini的[mysqld]字段加入：<br>skip-grant-tables<br>重启mysql服务，这时的mysql不需要密码即可登录数据库<br> 然后进入mysql<br>mysql&gt;use mysql;<br> mysql&gt;更新 update user set password&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;(mysql5.7为：update user set authentication_string&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;)<br>mysql&gt;flush privileges;<br> 运行之后最后去掉my.ini中的skip-grant-tables，重启mysql即可。</p>
@@ -510,12 +516,6 @@
 <p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211012173414277.png" alt="image-20211012173414277"></p>
 <h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h4><p>RabbitMQ 只会检查第一个消息是否过期，如果过期则丢到死信队列， 如果第一个消息的延时时长很长，而第二个消息的延时时长很短，第二个消息并不会优先得到执行（说白了消息是要排队的，先进先出）。</p>
 <h5 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h5><h3 id="如何保证顺序消费"><a href="#如何保证顺序消费" class="headerlink" title="如何保证顺序消费"></a>如何保证顺序消费</h3><h2 id="从RabbitMQ看设计模式"><a href="#从RabbitMQ看设计模式" class="headerlink" title="从RabbitMQ看设计模式"></a>从RabbitMQ看设计模式</h2><p>RabbitAdmin实现了AppplicationContextAware、InitializingBean接口。spring容器初始化RabbitAdmin后，调用InitializingBean的afterPropertiesSet()方法，在该方法内有一个监听器方法并传入一个匿名内部类实例，监听到有新的MQ连接时，回调这个内部类实例的方法，查找的spring容器创建的交换机、队列、绑定关系的Bean，并声明交换机、队列、绑定关系。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>这是我的第一个博客</title>
-    <url>/2022/07/23/my-first-blog/</url>
-    <content><![CDATA[<p>这是我的第一个博客</p>
 ]]></content>
   </entry>
 </search>
