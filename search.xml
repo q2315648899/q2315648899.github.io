@@ -38,12 +38,6 @@
       </tags>
   </entry>
   <entry>
-    <title>这是我的第一个博客</title>
-    <url>/2022/07/23/my-first-blog/</url>
-    <content><![CDATA[<p>这是我的第一个博客</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2022/07/23/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -62,13 +56,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title>springmvc个人总结</title>
-    <url>/2022/07/23/springmvc%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="springmvc参数传递"><a href="#springmvc参数传递" class="headerlink" title="springmvc参数传递"></a>springmvc参数传递</h1><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213100048.png" alt="image-20211109213100048"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213340566.png" alt="image-20211109213340566"></p>
-<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>设置Content-Type:multipart&#x2F;form-data</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211110095259254.png" alt="image-20211110095259254"></p>
-<p><img src="/img/image-20211110095309699.png" alt="image-20211110095309699"></p>
+    <title>这是我的第一个博客</title>
+    <url>/2022/07/23/my-first-blog/</url>
+    <content><![CDATA[<p>这是我的第一个博客</p>
 ]]></content>
   </entry>
   <entry>
@@ -201,6 +191,50 @@
 <h2 id="复杂sql"><a href="#复杂sql" class="headerlink" title="复杂sql"></a>复杂sql</h2><p>多表联合更新</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update t_truck_info a,t_temp_license_record b set a.temp_license=b.temp_license,a.temp_license_back_image=b.driving_license_img where a.vin_code = b.vin_code and a.vin_code in (select vin_code from t_waybill where order_no = &#x27;OR00051439&#x27;);</span><br></pre></td></tr></table></figure>
 
+]]></content>
+  </entry>
+  <entry>
+    <title>springmvc个人总结</title>
+    <url>/2022/07/23/springmvc%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="springmvc参数传递"><a href="#springmvc参数传递" class="headerlink" title="springmvc参数传递"></a>springmvc参数传递</h1><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213100048.png" alt="image-20211109213100048"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213340566.png" alt="image-20211109213340566"></p>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>设置Content-Type:multipart&#x2F;form-data</p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211110095259254.png" alt="image-20211110095259254"></p>
+<p><img src="/img/image-20211110095309699.png" alt="image-20211110095309699"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>数据结构和算法</title>
+    <url>/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+<li><p>二叉树前序遍历、中序遍历、后序遍历。</p>
+</li>
+<li><p>满二叉树，完全二叉树（如果该二叉树的所有叶子节点都在最后一层或者倒数第二层，而且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，我们称为完全二叉树）。</p>
+</li>
+<li><p>顺序存储二叉树是使用顺序存储的二叉树。将二叉树存储在一个数组中，通过存储元素的下标反映元素之间的父子关系。二叉树的顺序存储就是用一组连续的存储单元存放二又树中的结点元素，一般按照二叉树结点自上向下、自左向右的顺序存储。通常只考虑完全二叉树。</p>
+</li>
+</ul>
+<h3 id="二叉排序树（也叫二叉搜索树）"><a href="#二叉排序树（也叫二叉搜索树）" class="headerlink" title="二叉排序树（也叫二叉搜索树）"></a>二叉排序树（也叫二叉搜索树）</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png" alt="image-20211017121948691"></p>
+<p>二叉排序树，中序遍历出来的数据是递增有序的。如果一个是递增数列如：{1，2，3，4，5}，创建二叉树时左子树全为空，更像一个单链表。</p>
+<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170451669.png" alt="image-20211017170451669"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170606509.png" alt="image-20211017170606509"></p>
+<p><img src="/img/image-20211017170716264.png" alt="image-20211017170716264"></p>
+<h3 id="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"><a href="#平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）" class="headerlink" title="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"></a>平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。（和完全二叉树不同，平衡二叉树没说叶子节点在左边或右边一定要连续）</p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017122347145.png" alt="image-20211017122347145"></p>
+<h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164634054.png" alt="image-20211017164634054"></p>
+<h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164654839.png" alt="image-20211017164654839"></p>
+<h4 id="左右双旋转"><a href="#左右双旋转" class="headerlink" title="左右双旋转"></a>左右双旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164808945.png" alt="image-20211017164808945"></p>
+<h2 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h2><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>B树，这个B是指Balanced , 平衡的意思，不是指的Binary ，要明确这点.</p>
+<p>B树仍然遵循(BST 二叉排序树)的规则</p>
+<p><img src="/img/image-20211018005242287.png" alt="image-20211018005242287"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018002139673.png" alt="image-20211018002139673"></p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003234124.png" alt="image-20211018003234124"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003300188.png" alt="image-20211018003300188"></p>
+<h3 id="mysql的B-树"><a href="#mysql的B-树" class="headerlink" title="mysql的B+树"></a>mysql的B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003332890.png" alt="image-20211018003332890"></p>
+<h4 id="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"><a href="#主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）" class="headerlink" title="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"></a>主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018020434517.png" alt="image-20211018020434517"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018022851648.png" alt="image-20211018022851648"></p>
+<h4 id="稠密索引、稀疏索引"><a href="#稠密索引、稀疏索引" class="headerlink" title="稠密索引、稀疏索引"></a>稠密索引、稀疏索引</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024153379.png" alt="image-20211018024153379"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024323135.png" alt="image-20211018024323135"></p>
 ]]></content>
   </entry>
   <entry>
@@ -482,40 +516,6 @@
 <p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211012173414277.png" alt="image-20211012173414277"></p>
 <h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h4><p>RabbitMQ 只会检查第一个消息是否过期，如果过期则丢到死信队列， 如果第一个消息的延时时长很长，而第二个消息的延时时长很短，第二个消息并不会优先得到执行（说白了消息是要排队的，先进先出）。</p>
 <h5 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h5><h3 id="如何保证顺序消费"><a href="#如何保证顺序消费" class="headerlink" title="如何保证顺序消费"></a>如何保证顺序消费</h3><h2 id="从RabbitMQ看设计模式"><a href="#从RabbitMQ看设计模式" class="headerlink" title="从RabbitMQ看设计模式"></a>从RabbitMQ看设计模式</h2><p>RabbitAdmin实现了AppplicationContextAware、InitializingBean接口。spring容器初始化RabbitAdmin后，调用InitializingBean的afterPropertiesSet()方法，在该方法内有一个监听器方法并传入一个匿名内部类实例，监听到有新的MQ连接时，回调这个内部类实例的方法，查找的spring容器创建的交换机、队列、绑定关系的Bean，并声明交换机、队列、绑定关系。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>数据结构和算法</title>
-    <url>/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
-<li><p>二叉树前序遍历、中序遍历、后序遍历。</p>
-</li>
-<li><p>满二叉树，完全二叉树（如果该二叉树的所有叶子节点都在最后一层或者倒数第二层，而且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，我们称为完全二叉树）。</p>
-</li>
-<li><p>顺序存储二叉树是使用顺序存储的二叉树。将二叉树存储在一个数组中，通过存储元素的下标反映元素之间的父子关系。二叉树的顺序存储就是用一组连续的存储单元存放二又树中的结点元素，一般按照二叉树结点自上向下、自左向右的顺序存储。通常只考虑完全二叉树。</p>
-</li>
-</ul>
-<h3 id="二叉排序树（也叫二叉搜索树）"><a href="#二叉排序树（也叫二叉搜索树）" class="headerlink" title="二叉排序树（也叫二叉搜索树）"></a>二叉排序树（也叫二叉搜索树）</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png" alt="image-20211017121948691"></p>
-<p>二叉排序树，中序遍历出来的数据是递增有序的。如果一个是递增数列如：{1，2，3，4，5}，创建二叉树时左子树全为空，更像一个单链表。</p>
-<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170451669.png" alt="image-20211017170451669"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170606509.png" alt="image-20211017170606509"></p>
-<p><img src="/img/image-20211017170716264.png" alt="image-20211017170716264"></p>
-<h3 id="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"><a href="#平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）" class="headerlink" title="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"></a>平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。（和完全二叉树不同，平衡二叉树没说叶子节点在左边或右边一定要连续）</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017122347145.png" alt="image-20211017122347145"></p>
-<h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164634054.png" alt="image-20211017164634054"></p>
-<h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164654839.png" alt="image-20211017164654839"></p>
-<h4 id="左右双旋转"><a href="#左右双旋转" class="headerlink" title="左右双旋转"></a>左右双旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164808945.png" alt="image-20211017164808945"></p>
-<h2 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h2><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>B树，这个B是指Balanced , 平衡的意思，不是指的Binary ，要明确这点.</p>
-<p>B树仍然遵循(BST 二叉排序树)的规则</p>
-<p><img src="/img/image-20211018005242287.png" alt="image-20211018005242287"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018002139673.png" alt="image-20211018002139673"></p>
-<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003234124.png" alt="image-20211018003234124"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003300188.png" alt="image-20211018003300188"></p>
-<h3 id="mysql的B-树"><a href="#mysql的B-树" class="headerlink" title="mysql的B+树"></a>mysql的B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003332890.png" alt="image-20211018003332890"></p>
-<h4 id="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"><a href="#主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）" class="headerlink" title="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"></a>主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018020434517.png" alt="image-20211018020434517"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018022851648.png" alt="image-20211018022851648"></p>
-<h4 id="稠密索引、稀疏索引"><a href="#稠密索引、稀疏索引" class="headerlink" title="稠密索引、稀疏索引"></a>稠密索引、稀疏索引</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024153379.png" alt="image-20211018024153379"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024323135.png" alt="image-20211018024323135"></p>
 ]]></content>
   </entry>
 </search>
