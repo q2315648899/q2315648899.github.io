@@ -2,9 +2,10 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -13,14 +14,13 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://lib.baomitu.com/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-  <meta name="description" content="分布式事务相关学成在线day19:业务场景：支付成功即完成订单，订单完成之后系统需自动添加选课。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="分布式事务相关学成在线day19:业务场景：支付成功即完成订单，订单完成之后系统需自动添加选课。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式事务相关">
 <meta property="og:url" content="http://example.com/2022/07/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3/index.html">
@@ -72,72 +72,46 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211005154954957.png">
 
+
 <link rel="canonical" href="http://example.com/2022/07/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>分布式事务相关 | Hexo</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/07/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3/","path":"2022/07/23/分布式事务相关/","title":"分布式事务相关"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>分布式事务相关 | Hexo</title>
   
 
 
 
 
 
-
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
+  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Hexo</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
     </a>
   </div>
 
@@ -150,34 +124,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-rss">
-
-    <a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -188,23 +136,22 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
@@ -212,69 +159,171 @@
   </div>
 
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">分布式事务相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF"><span class="nav-number">1.1.</span> <span class="nav-text">学成在线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#day19"><span class="nav-number">1.1.1.</span> <span class="nav-text">day19:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%8C%E9%98%B2%E6%AD%A2%E8%AE%A2%E5%8D%95%E6%9C%8D%E5%8A%A1%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4%EF%BC%8C%E4%BA%A7%E7%94%9F%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%EF%BC%88%E5%AE%9E%E7%8E%B0%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%89"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1，防止订单服务重复提交，产生重复数据（实现幂等性）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%8C%E9%98%B2%E6%AD%A2%E8%AE%A2%E5%8D%95%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E9%87%8D%E5%A4%8D%E6%89%A7%E8%A1%8C%E5%8F%91%E9%80%81MQ%E6%B6%88%E6%81%AF%EF%BC%88%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%98%B2%E6%AD%A2%E6%B6%88%E6%81%AF%E9%87%8D%E5%A4%8D%EF%BC%8C%E5%8D%B3%E5%AE%9E%E7%8E%B0%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%89"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2，防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%87%E4%BF%A1%E9%87%91%E8%9E%8D"><span class="nav-number">1.2.</span> <span class="nav-text">万信金融</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#day09-%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E5%8F%91%E6%A0%87"><span class="nav-number">1.2.1.</span> <span class="nav-text">day09:第三章：发标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%8C%E9%98%B2%E6%AD%A2%E5%AD%98%E7%AE%A1%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E6%88%96%E9%93%B6%E8%A1%8C%E5%AD%98%E7%AE%A1%E6%9C%8D%E5%8A%A1%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4%EF%BC%8C%E4%BA%A7%E7%94%9F%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%EF%BC%88%E5%AE%9E%E7%8E%B0%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1，防止存管代理服务或银行存管服务重复提交，产生重复数据（实现幂等性）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.3.</span> <span class="nav-text">分布式事务产生的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%B1%82%E6%8B%86%E5%88%86"><span class="nav-number">1.3.1.</span> <span class="nav-text">存储层拆分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%B1%82%E6%8B%86%E5%88%86"><span class="nav-number">1.3.2.</span> <span class="nav-text">服务层拆分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%B8%B8%E7%94%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">分布式锁的常用实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.1.</span> <span class="nav-text">基于关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ERedis"><span class="nav-number">1.4.2.</span> <span class="nav-text">基于Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E8%BF%87%E6%9C%9F%E4%BA%86%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E8%BF%98%E6%B2%A1%E5%A4%84%E7%90%86%E5%AE%8C%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">Redis 分布式锁过期了，但是业务逻辑还没处理完怎么办</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nacos"><span class="nav-number">1.5.</span> <span class="nav-text">Nacos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canal%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7"><span class="nav-number">1.7.</span> <span class="nav-text">Canal数据库同步工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElasticSearch%E6%90%9C%E7%B4%A2%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">ElasticSearch搜索中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">1.9.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E7%9A%84%E5%87%A0%E7%A7%8D%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5%EF%BC%9A"><span class="nav-number">1.9.1.</span> <span class="nav-text">数据库和缓存一致性的几种更新策略：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0%E7%9A%84%E6%80%9D%E8%80%83"><span class="nav-number">1.9.2.</span> <span class="nav-text">对缓存更新的思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%EF%BC%88%E8%BF%99%E4%BA%9B%E4%B9%9F%E9%80%82%E7%94%A8%E4%BA%8Ecanal%E7%9A%84%E5%88%86%E7%89%87%E8%A7%84%E5%88%99%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">分库分表（这些也适用于canal的分片规则）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99"><span class="nav-number">1.10.1.</span> <span class="nav-text">路由规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%9B%86%E7%BE%A4%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="nav-number">1.11.</span> <span class="nav-text">缓存集群的负载均衡策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99-1"><span class="nav-number">1.11.1.</span> <span class="nav-text">路由规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%8F%96%E6%A8%A1"><span class="nav-number">1.11.1.1.</span> <span class="nav-text">哈希取模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%EF%BC%88%E4%BC%9A%E5%AD%98%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C%E9%97%AE%E9%A2%98%EF%BC%8C%E5%8F%AF%E8%80%83%E8%99%91%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">1.11.1.2.</span> <span class="nav-text">一致性哈希（会存在数据倾斜问题，可考虑添加虚拟节点解决）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%A4%8D%E6%9D%82%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.</span> <span class="nav-text">常见的复杂均衡策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E8%AF%A2%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.1.</span> <span class="nav-text">轮询策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2"><span class="nav-number">1.12.2.</span> <span class="nav-text">加权轮询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.3.</span> <span class="nav-text">随机策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4"><span class="nav-number">1.12.4.</span> <span class="nav-text">最小响应时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%B9%B6%E5%8F%91%E6%95%B0%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.5.</span> <span class="nav-text">最小并发数策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%B8%80%E8%87%B4%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.13.</span> <span class="nav-text">分布式事务一致性解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCC%EF%BC%88%E4%BA%8B%E5%8A%A1%E8%A1%A5%E5%81%BF%EF%BC%89"><span class="nav-number">1.13.1.</span> <span class="nav-text">TCC（事务补偿）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-1"><span class="nav-number">1.13.2.</span> <span class="nav-text">消息队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.13.2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.13.2.2.</span> <span class="nav-text">要考虑的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E4%B8%A2%E5%A4%B1"><span class="nav-number">1.13.2.2.1.</span> <span class="nav-text">消息丢失</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.13.2.2.1.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%AE%8C%E2%80%9C%E5%A6%82%E4%BD%95%E7%A1%AE%E4%BF%9D%E6%B6%88%E6%81%AF%E4%B8%8D%E4%BC%9A%E4%B8%A2%E5%A4%B1%EF%BC%9F%E2%80%9D%E4%B9%8B%E5%90%8E%EF%BC%8C%E2%80%9C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E6%B6%88%E6%81%AF%E8%A2%AB%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F%E2%80%9D"><span class="nav-number">1.13.2.2.2.</span> <span class="nav-text">解决完“如何确保消息不会丢失？”之后，“怎么解决消息被重复消费的问题？”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-1"><span class="nav-number">1.13.2.2.2.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E8%B4%B9%E7%A7%AF%E5%8E%8B"><span class="nav-number">1.13.2.2.3.</span> <span class="nav-text">消费积压</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%88%E6%B6%88%E6%81%AF%E5%B9%82%E7%AD%89%E5%92%8C%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%EF%BC%89"><span class="nav-number">1.14.</span> <span class="nav-text">幂等性（消息幂等和接口幂等）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%8A%E8%A7%A3%E5%86%B3%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">1.14.1.</span> <span class="nav-text">业务上解决幂等性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%8E%BB%E9%87%8D%EF%BC%88%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%EF%BC%89"><span class="nav-number">1.14.1.1.</span> <span class="nav-text">利用数据库进行去重（唯一索引）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80%E6%B6%88%E6%81%AF-ID-%E6%88%96%E8%80%85%E4%BB%BB%E5%8A%A1-ID%EF%BC%88redis%E8%AE%BE%E7%BD%AEkey%EF%BC%89%EF%BC%88redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%89"><span class="nav-number">1.14.1.2.</span> <span class="nav-text">设置全局唯一消息 ID 或者任务 ID（redis设置key）（redis分布式锁也可以）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.15.</span> <span class="nav-text">RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.15.1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.15.1.1.</span> <span class="nav-text">点到点模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.15.1.2.</span> <span class="nav-text">发布&#x2F;订阅模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88%E5%85%AD%E5%A4%A7%E7%89%B9%E6%80%A7%E6%9C%BA%E5%88%B6%EF%BC%89"><span class="nav-number">1.15.2.</span> <span class="nav-text">要考虑的问题（六大特性机制）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%B6%88%E6%81%AF%E5%8F%AF%E9%9D%A0%E6%80%A7%EF%BC%88%E5%85%AD%E5%A4%A7%E7%89%B9%E6%80%A7%E6%9C%BA%E5%88%B6%EF%BC%89"><span class="nav-number">1.15.3.</span> <span class="nav-text">如何保证消息可靠性（六大特性机制）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E5%A4%A7%E7%89%B9%E6%80%A7%E6%9C%BA%E5%88%B6"><span class="nav-number">1.15.4.</span> <span class="nav-text">六大特性机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.15.4.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.15.5.</span> <span class="nav-text">备份交换机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">1.15.5.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97"><span class="nav-number">1.15.6.</span> <span class="nav-text">延迟队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.15.6.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.15.6.2.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.15.6.3.</span> <span class="nav-text">存在的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-2"><span class="nav-number">1.15.6.3.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E9%A1%BA%E5%BA%8F%E6%B6%88%E8%B4%B9"><span class="nav-number">1.15.7.</span> <span class="nav-text">如何保证顺序消费</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8ERabbitMQ%E7%9C%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.16.</span> <span class="nav-text">从RabbitMQ看设计模式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wang Baibai"
+      src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
+  <p class="site-author-name" itemprop="name">Wang Baibai</p>
+  <div class="site-description" itemprop="description">受尽苦难而不厌此，乃修罗之道</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/q2315648899" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;q2315648899" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangzixuan4069@gmail.com" title="E-Mail → mailto:wangzixuan4069@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+
+	  
+	  <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+	  <div class="widget-wrap">
+	  	<div id="myCanvasContainer" class="widget tagcloud">
+	  		<canvas width="250" height="250" id="resCanvas" style="width:100%">
+	  			<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%95%E5%B1%82/" rel="tag">底层</a><span class="tag-list-count">1</span></li></ul>
+	  		</canvas>
+	  	</div>
+	  </div>
+	  
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
     </header>
 
     
-  <div class="back-to-top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
       <meta itemprop="name" content="Wang Baibai">
-      <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="受尽苦难而不厌此，乃修罗之道">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="分布式事务相关 | Hexo">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           分布式事务相关
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
 
-              <time title="创建时间：2022-07-23 18:24:05 / 修改时间：18:42:33" itemprop="dateCreated datePublished" datetime="2022-07-23T18:24:05+08:00">2022-07-23</time>
-            </span>
+      <time title="创建时间：2022-07-23 18:24:05 / 修改时间：18:42:33" itemprop="dateCreated datePublished" datetime="2022-07-23T18:24:05+08:00">2022-07-23</time>
+    </span>
 
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>14k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>23 分钟</span>
-            </span>
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>14k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>23 分钟</span>
+    </span>
+</div>
 
         </div>
       </header>
@@ -283,8 +332,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <h1 id="分布式事务相关"><a href="#分布式事务相关" class="headerlink" title="分布式事务相关"></a>分布式事务相关</h1><h2 id="学成在线"><a href="#学成在线" class="headerlink" title="学成在线"></a>学成在线</h2><h3 id="day19"><a href="#day19" class="headerlink" title="day19:"></a>day19:</h3><p><strong>业务场景</strong>：支付成功即完成订单，订单完成之后系统需自动添加选课。</p>
 <p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211005154954957.png" alt="image-20211005154954957"></p>
 <h4 id="1，防止订单服务重复提交，产生重复数据（实现幂等性）"><a href="#1，防止订单服务重复提交，产生重复数据（实现幂等性）" class="headerlink" title="1，防止订单服务重复提交，产生重复数据（实现幂等性）"></a>1，防止订单服务重复提交，产生重复数据（实现幂等性）</h4><p>业务场景：提交订单成功跳转到支付页面，可能会出现重复刷新跳转到支付页面</p>
@@ -566,7 +613,9 @@
 
     
     
-    <script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script>
+    
+
+    <footer class="post-footer"><script src="//sdk.jinrishici.com/v2/browser/jinrishici.js"></script>
 <script>
   jinrishici.load((result) => {
     let jrsc = document.getElementById('jrsc');
@@ -579,16 +628,16 @@
   });
 </script>
 <div style="text-align: center"><span id="jrsc" >正在加载今日诗词....</span></div>
-        
+          
 
-<div>
-<ul class="post-copyright">
+<div class="post-copyright">
+<ul>
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>Wang Baibai
+      <strong>本文作者： </strong>Wang Baibai
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://example.com/2022/07/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3/" title="分布式事务相关">http://example.com/2022/07/23/分布式事务相关/</a>
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2022/07/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3/" title="分布式事务相关">http://example.com/2022/07/23/分布式事务相关/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -597,227 +646,102 @@
 </div>
 
 
-      <footer class="post-footer">
-
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/07/23/mysql%E7%AC%94%E8%AE%B0(%E4%B8%AA%E4%BA%BA)/" rel="prev" title="mysql笔记(个人)">
-      <i class="fa fa-chevron-left"></i> mysql笔记(个人)
-    </a></div>
-      <div class="post-nav-item"></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/23/mysql%E7%AC%94%E8%AE%B0(%E4%B8%AA%E4%BA%BA)/" rel="prev" title="mysql笔记(个人)">
+                  <i class="fa fa-chevron-left"></i> mysql笔记(个人)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">分布式事务相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E6%88%90%E5%9C%A8%E7%BA%BF"><span class="nav-number">1.1.</span> <span class="nav-text">学成在线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#day19"><span class="nav-number">1.1.1.</span> <span class="nav-text">day19:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%8C%E9%98%B2%E6%AD%A2%E8%AE%A2%E5%8D%95%E6%9C%8D%E5%8A%A1%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4%EF%BC%8C%E4%BA%A7%E7%94%9F%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%EF%BC%88%E5%AE%9E%E7%8E%B0%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%89"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1，防止订单服务重复提交，产生重复数据（实现幂等性）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%8C%E9%98%B2%E6%AD%A2%E8%AE%A2%E5%8D%95%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E9%87%8D%E5%A4%8D%E6%89%A7%E8%A1%8C%E5%8F%91%E9%80%81MQ%E6%B6%88%E6%81%AF%EF%BC%88%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%98%B2%E6%AD%A2%E6%B6%88%E6%81%AF%E9%87%8D%E5%A4%8D%EF%BC%8C%E5%8D%B3%E5%AE%9E%E7%8E%B0%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%89"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2，防止订单服务的定时任务重复执行发送MQ消息（消息队列防止消息重复，即实现幂等性）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%87%E4%BF%A1%E9%87%91%E8%9E%8D"><span class="nav-number">1.2.</span> <span class="nav-text">万信金融</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#day09-%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9A%E5%8F%91%E6%A0%87"><span class="nav-number">1.2.1.</span> <span class="nav-text">day09:第三章：发标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%8C%E9%98%B2%E6%AD%A2%E5%AD%98%E7%AE%A1%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E6%88%96%E9%93%B6%E8%A1%8C%E5%AD%98%E7%AE%A1%E6%9C%8D%E5%8A%A1%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4%EF%BC%8C%E4%BA%A7%E7%94%9F%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%EF%BC%88%E5%AE%9E%E7%8E%B0%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1，防止存管代理服务或银行存管服务重复提交，产生重复数据（实现幂等性）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.3.</span> <span class="nav-text">分布式事务产生的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%B1%82%E6%8B%86%E5%88%86"><span class="nav-number">1.3.1.</span> <span class="nav-text">存储层拆分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%B1%82%E6%8B%86%E5%88%86"><span class="nav-number">1.3.2.</span> <span class="nav-text">服务层拆分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E5%B8%B8%E7%94%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">分布式锁的常用实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.4.1.</span> <span class="nav-text">基于关系型数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ERedis"><span class="nav-number">1.4.2.</span> <span class="nav-text">基于Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E8%BF%87%E6%9C%9F%E4%BA%86%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E8%BF%98%E6%B2%A1%E5%A4%84%E7%90%86%E5%AE%8C%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">Redis 分布式锁过期了，但是业务逻辑还没处理完怎么办</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nacos"><span class="nav-number">1.5.</span> <span class="nav-text">Nacos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="nav-number">1.6.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Canal%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7"><span class="nav-number">1.7.</span> <span class="nav-text">Canal数据库同步工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElasticSearch%E6%90%9C%E7%B4%A2%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">ElasticSearch搜索中间件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">1.9.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E7%9A%84%E5%87%A0%E7%A7%8D%E6%9B%B4%E6%96%B0%E7%AD%96%E7%95%A5%EF%BC%9A"><span class="nav-number">1.9.1.</span> <span class="nav-text">数据库和缓存一致性的几种更新策略：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E7%BC%93%E5%AD%98%E6%9B%B4%E6%96%B0%E7%9A%84%E6%80%9D%E8%80%83"><span class="nav-number">1.9.2.</span> <span class="nav-text">对缓存更新的思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%EF%BC%88%E8%BF%99%E4%BA%9B%E4%B9%9F%E9%80%82%E7%94%A8%E4%BA%8Ecanal%E7%9A%84%E5%88%86%E7%89%87%E8%A7%84%E5%88%99%EF%BC%89"><span class="nav-number">1.10.</span> <span class="nav-text">分库分表（这些也适用于canal的分片规则）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99"><span class="nav-number">1.10.1.</span> <span class="nav-text">路由规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%9B%86%E7%BE%A4%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="nav-number">1.11.</span> <span class="nav-text">缓存集群的负载均衡策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%84%E5%88%99-1"><span class="nav-number">1.11.1.</span> <span class="nav-text">路由规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%8F%96%E6%A8%A1"><span class="nav-number">1.11.1.1.</span> <span class="nav-text">哈希取模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%EF%BC%88%E4%BC%9A%E5%AD%98%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%80%BE%E6%96%9C%E9%97%AE%E9%A2%98%EF%BC%8C%E5%8F%AF%E8%80%83%E8%99%91%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">1.11.1.2.</span> <span class="nav-text">一致性哈希（会存在数据倾斜问题，可考虑添加虚拟节点解决）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%A4%8D%E6%9D%82%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.</span> <span class="nav-text">常见的复杂均衡策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E8%AF%A2%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.1.</span> <span class="nav-text">轮询策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2"><span class="nav-number">1.12.2.</span> <span class="nav-text">加权轮询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.3.</span> <span class="nav-text">随机策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4"><span class="nav-number">1.12.4.</span> <span class="nav-text">最小响应时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E5%B9%B6%E5%8F%91%E6%95%B0%E7%AD%96%E7%95%A5"><span class="nav-number">1.12.5.</span> <span class="nav-text">最小并发数策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E4%B8%80%E8%87%B4%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.13.</span> <span class="nav-text">分布式事务一致性解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCC%EF%BC%88%E4%BA%8B%E5%8A%A1%E8%A1%A5%E5%81%BF%EF%BC%89"><span class="nav-number">1.13.1.</span> <span class="nav-text">TCC（事务补偿）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97-1"><span class="nav-number">1.13.2.</span> <span class="nav-text">消息队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.13.2.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.13.2.2.</span> <span class="nav-text">要考虑的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E4%B8%A2%E5%A4%B1"><span class="nav-number">1.13.2.2.1.</span> <span class="nav-text">消息丢失</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.13.2.2.1.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%AE%8C%E2%80%9C%E5%A6%82%E4%BD%95%E7%A1%AE%E4%BF%9D%E6%B6%88%E6%81%AF%E4%B8%8D%E4%BC%9A%E4%B8%A2%E5%A4%B1%EF%BC%9F%E2%80%9D%E4%B9%8B%E5%90%8E%EF%BC%8C%E2%80%9C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E6%B6%88%E6%81%AF%E8%A2%AB%E9%87%8D%E5%A4%8D%E6%B6%88%E8%B4%B9%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9F%E2%80%9D"><span class="nav-number">1.13.2.2.2.</span> <span class="nav-text">解决完“如何确保消息不会丢失？”之后，“怎么解决消息被重复消费的问题？”</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-1"><span class="nav-number">1.13.2.2.2.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B6%88%E8%B4%B9%E7%A7%AF%E5%8E%8B"><span class="nav-number">1.13.2.2.3.</span> <span class="nav-text">消费积压</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%82%E7%AD%89%E6%80%A7%EF%BC%88%E6%B6%88%E6%81%AF%E5%B9%82%E7%AD%89%E5%92%8C%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%EF%BC%89"><span class="nav-number">1.14.</span> <span class="nav-text">幂等性（消息幂等和接口幂等）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%8A%E8%A7%A3%E5%86%B3%E5%B9%82%E7%AD%89%E6%80%A7"><span class="nav-number">1.14.1.</span> <span class="nav-text">业务上解决幂等性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%8E%BB%E9%87%8D%EF%BC%88%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%EF%BC%89"><span class="nav-number">1.14.1.1.</span> <span class="nav-text">利用数据库进行去重（唯一索引）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80%E6%B6%88%E6%81%AF-ID-%E6%88%96%E8%80%85%E4%BB%BB%E5%8A%A1-ID%EF%BC%88redis%E8%AE%BE%E7%BD%AEkey%EF%BC%89%EF%BC%88redis%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E4%B9%9F%E5%8F%AF%E4%BB%A5%EF%BC%89"><span class="nav-number">1.14.1.2.</span> <span class="nav-text">设置全局唯一消息 ID 或者任务 ID（redis设置key）（redis分布式锁也可以）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.15.</span> <span class="nav-text">RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.15.1.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.15.1.1.</span> <span class="nav-text">点到点模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.15.1.2.</span> <span class="nav-text">发布&#x2F;订阅模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E8%80%83%E8%99%91%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%88%E5%85%AD%E5%A4%A7%E7%89%B9%E6%80%A7%E6%9C%BA%E5%88%B6%EF%BC%89"><span class="nav-number">1.15.2.</span> <span class="nav-text">要考虑的问题（六大特性机制）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%B6%88%E6%81%AF%E5%8F%AF%E9%9D%A0%E6%80%A7%EF%BC%88%E5%85%AD%E5%A4%A7%E7%89%B9%E6%80%A7%E6%9C%BA%E5%88%B6%EF%BC%89"><span class="nav-number">1.15.3.</span> <span class="nav-text">如何保证消息可靠性（六大特性机制）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E5%A4%A7%E7%89%B9%E6%80%A7%E6%9C%BA%E5%88%B6"><span class="nav-number">1.15.4.</span> <span class="nav-text">六大特性机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.15.4.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.15.5.</span> <span class="nav-text">备份交换机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">1.15.5.1.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97"><span class="nav-number">1.15.6.</span> <span class="nav-text">延迟队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.15.6.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.15.6.2.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.15.6.3.</span> <span class="nav-text">存在的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-2"><span class="nav-number">1.15.6.3.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E9%A1%BA%E5%BA%8F%E6%B6%88%E8%B4%B9"><span class="nav-number">1.15.7.</span> <span class="nav-text">如何保证顺序消费</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8ERabbitMQ%E7%9C%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.16.</span> <span class="nav-text">从RabbitMQ看设计模式</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Wang Baibai"
-      src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/20220723190212.jpg">
-  <p class="site-author-name" itemprop="name">Wang Baibai</p>
-  <div class="site-description" itemprop="description">受尽苦难而不厌此，乃修罗之道</div>
+    </footer>
+  </article>
 </div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">7</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+
+
+
+
+
+
 </div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/q2315648899" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;q2315648899" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:wangzixuan4069@gmail.com" title="E-Mail → mailto:wangzixuan4069@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-inner">
 
-
-      </div>
-
-	  
-	  <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-	  <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-	  <div class="widget-wrap">
-	  	<div id="myCanvasContainer" class="widget tagcloud">
-	  		<canvas width="250" height="250" id="resCanvas" style="width:100%">
-	  			<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%95%E5%B1%82/" rel="tag">底层</a><span class="tag-list-count">1</span></li></ul>
-	  		</canvas>
-	  	</div>
-	  </div>
-	  
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Wang Baibai</span>
-    <span class="post-meta-divider">|</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
     <span class="post-meta-item-icon">
-      <i class="fa fa-chart-area"></i>
+      <i class="fa fa-chart-line"></i>
     </span>
     <span title="站点总字数">21k</span>
-    <span class="post-meta-divider">|</span>
+  </span>
+  <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
     <span title="站点阅读时长">35 分钟</span>
+  </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://lib.baomitu.com/canvas-nest.js/1.0.1/canvas-nest.js"></script>
 
 
-        
 
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
+  <script src="https://lib.baomitu.com/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://lib.baomitu.com/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
+<script src="https://lib.baomitu.com/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-  
+
+
+
 
 </body>
 </html>
