@@ -38,6 +38,12 @@
       </tags>
   </entry>
   <entry>
+    <title>这是我的第一个博客</title>
+    <url>/2022/07/23/my-first-blog/</url>
+    <content><![CDATA[<p>这是我的第一个博客</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2022/07/23/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -58,9 +64,180 @@
 ]]></content>
   </entry>
   <entry>
-    <title>这是我的第一个博客</title>
-    <url>/2022/07/23/my-first-blog/</url>
-    <content><![CDATA[<p>这是我的第一个博客</p>
+    <title>mysql笔记(个人)</title>
+    <url>/2022/07/23/mysql%E7%AC%94%E8%AE%B0(%E4%B8%AA%E4%BA%BA)/</url>
+    <content><![CDATA[<h2 id="重置Root密码"><a href="#重置Root密码" class="headerlink" title="重置Root密码"></a><strong><u><span style='color:red'>重置Root密码</span></u></strong></h2><p>方法一:<br> 在my.ini的[mysqld]字段加入：<br>skip-grant-tables<br>重启mysql服务，这时的mysql不需要密码即可登录数据库<br> 然后进入mysql<br>mysql&gt;use mysql;<br> mysql&gt;更新 update user set password&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;(mysql5.7为：update user set authentication_string&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;)<br>mysql&gt;flush privileges;<br> 运行之后最后去掉my.ini中的skip-grant-tables，重启mysql即可。</p>
+<span id="more"></span>
+
+<p>如果提示：You must reset your password using ALTER USER statement before executing this statement。</p>
+<p>进入mysql，执行命令：alter user user() identified by “新密码”;</p>
+<p>方法二:（若新的mysql版本只有mysqld，用mysqld代替mysqld-nt即可）<br> 不使用修改my.ini重启服务的方法，通过非服务方式加skip-grant-tables运行mysql来修改mysql密码<br> 停止mysql服务<br> 打开命令行窗口，在bin目录下使用mysqld-nt.exe启动，即在命令行窗口执行: mysqld-nt –skip-grant-tables<br> 然后另外打开一个命令行窗口，登录mysql，此时无需输入mysql密码即可进入。<br> 按以上方法修改好密码后,关闭命令行运行mysql的那个窗口，此时即关闭了mysql，如果发现mysql仍在运行<br> 的话可以结束掉对应进程来关闭。<br> 启动mysql服务</p>
+<h2 id="备份、恢复数据库"><a href="#备份、恢复数据库" class="headerlink" title="备份、恢复数据库"></a><strong><u><span style='color:red'>备份、恢复数据库</span></u></strong></h2><p>备份：</p>
+<p>–cmd&gt; mysqldump -u用户名 -p –database 数据库名 &gt; 文件名.sql &#x2F;&#x2F; 在cmd下使用</p>
+<!--database可省略，两者之间的差别在于不使用 --databases 选项，则备份输出信息中不会包含CREATE DATABASE或USE DATABASE语句。不使用 --databases 选项备份的数据文件，在后期进行数据还原操作时，如果该数据库不存在，必须先创建该数据库。-->
+
+<p>恢复：</p>
+<p>–source 文件名.sql  &#x2F;&#x2F; 在mysql内部使用</p>
+<!--如果备份时命令没加--database,恢复时要先执行命令--use 数据库名。如果数据库不存在，必须先创建数据库，恢复时先执行命令--use 数据库名，或者备份时命令加上--database（恢复时不用执行命令--use 数据库名）-->
+
+<p>–mysql –u用户名 -p 数据库名 &lt; 文件名.sql &#x2F;&#x2F; 在cmd下使用</p>
+<!--如果备份时命令没加--database,恢复命令的”数据库名“不能省略。如果数据库不存在，必须先创建数据库（恢复命令的”数据库名“不能省略），或者备份时命令加上--database（恢复命令的”数据库名“可以省略）-->
+
+
+
+<h2 id="mysql登录连接参数详解"><a href="#mysql登录连接参数详解" class="headerlink" title="mysql登录连接参数详解"></a><strong><u><span style='color:red'>mysql登录连接参数详解</span></u></strong></h2><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql [options] [database]</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">参数 ： </span><br><span class="line">	-u, --user=name			指定用户名</span><br><span class="line">	-p, --password[=name]	指定密码</span><br><span class="line">	-h, --host=name			指定要连接的服务器IP或域名</span><br><span class="line">	-P, --port=#			指定连接端口</span><br><span class="line"></span><br><span class="line">示例 ：</span><br><span class="line">	mysql -h 127.0.0.1 -P 3306 -u root -p</span><br><span class="line">	</span><br><span class="line">	mysql -h127.0.0.1 -P3306 -uroot -p2143</span><br></pre></td></tr></table></figure>
+
+<p>​	</p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210322220017115.png" alt="image-20210322220017115"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210322220448763.png" alt="image-20210322220448763"></p>
+<h2 id="mysql的锁机制——记录锁、间隙锁、临键锁"><a href="#mysql的锁机制——记录锁、间隙锁、临键锁" class="headerlink" title="mysql的锁机制——记录锁、间隙锁、临键锁"></a><strong><u><span style='color:red'>mysql的锁机制——记录锁、间隙锁、临键锁</span></u></strong></h2><p>innoDB支持三种行锁定方式：</p>
+<ul>
+<li>行锁（Record Lock）：锁直接加在索引记录上面（无索引项时演变成表锁）。</li>
+<li>间隙锁（Gap Lock）：锁定索引记录间隙，确保索引记录的间隙不变。间隙锁是针对事务隔离级别为可重复读或以上级别的。</li>
+<li>Next-Key Lock ：行锁和间隙锁组合起来就是 Next-Key Lock。</li>
+</ul>
+<p>innoDB默认的隔离级别是可重复读(Repeatable Read)，并且会以Next-Key Lock的方式对数据行进行加锁。Next-Key Lock是行锁和间隙锁的组合，当InnoDB扫描索引记录的时候，会首先对索引记录加上行锁（Record Lock），再对索引记录两边的间隙加上间隙锁（Gap Lock）。加上间隙锁之后，其他事务就不能在这个间隙修改或者插入记录。</p>
+<p>当查询的索引含有唯一属性（唯一索引，主键索引）时，Innodb存储引擎会对next-key lock进行优化，将其降为record lock,即仅锁住索引本身，而不是范围。</p>
+<p>间隙锁只有在事务隔离级别 RR 中才会产生；</p>
+<h3 id="何时使用行锁，何时产生间隙锁"><a href="#何时使用行锁，何时产生间隙锁" class="headerlink" title="何时使用行锁，何时产生间隙锁"></a>何时使用行锁，何时产生间隙锁</h3><ol>
+<li><p>只使用唯一索引查询，并且只锁定一条记录时，innoDB会使用行锁**<span style='color:red'>(即Innodb存储引擎会对next-key lock进行优化，将其降为record lock,即仅锁住索引本身，而不是范围)</span>**。</p>
+</li>
+<li><p>只使用唯一索引查询，但是检索条件是范围检索，或者是唯一检索然而检索结果不存在（试图锁住不存在的数据）时，会产生 Next-Key Lock。</p>
+</li>
+<li><p>使用普通索引检索时，不管是何种查询，只要加锁，都会产生间隙锁，这跟唯一索引不一样。</p>
+</li>
+<li><p>同时使用唯一索引和普通索引时，由于数据行是优先根据普通索引排序，再根据唯一索引排序，所以也会产生间隙锁**<span style='color:red'>(如果普通索引和间隙界限的普通索引相同无法判断是否在间隙内，则可以根据唯一索引和间隙界限的普通索引排序来判断是否在间隙内)</span>**。</p>
+</li>
+</ol>
+<p><strong>以上2和3中在查询条件范围内已存在的某一或某些行的索引项同时会被加上记录锁，在查询条件范围内但不存在的间隙内会加上间隙锁</strong></p>
+<h3 id="mysql的innodb引擎在默认RR-Repeatable-Read-级别下如何防止幻读"><a href="#mysql的innodb引擎在默认RR-Repeatable-Read-级别下如何防止幻读" class="headerlink" title="mysql的innodb引擎在默认RR(Repeatable Read)级别下如何防止幻读"></a>mysql的innodb引擎在默认RR(Repeatable Read)级别下如何防止幻读</h3><p>在快照读（snapshot read）的情况下，MySQL通过MVCC（多版本并发控制）来避免幻读。</p>
+<blockquote>
+<p>快照读，读取的是记录的可见版本 (有可能是历史版本)，不用加锁。主要应用于无需加锁的普通查询（select）操作。</p>
+</blockquote>
+<p>在当前读（current read）的情况下，MySQL通过next-key lock来避免幻读。</p>
+<blockquote>
+<p>当前读，读取的是记录的最新版本，并且会对当前记录加锁，防止其他事务发修改这条记录。加行共享锁（SELECT … LOCK IN SHARE MODE ）、加行排他锁（SELECT … FOR UPDATE &#x2F; INSERT &#x2F; UPDATE &#x2F; DELETE）的操作都会用到当前读。行锁可参看 <a href="https://links.jianshu.com/go?to=https://blog.csdn.net/zmflying8177/article/details/104826872">MySQL行锁</a>。</p>
+</blockquote>
+<p>MVCC只 在 READ COMMITTED 和 REPEATABLE READ 两个隔离级别下⼯作</p>
+<p><strong><span style='color:red'>MYSQL锁机制参考：【<a href="https://zhuanlan.zhihu.com/p/48269420%E3%80%91%E3%80%81%E3%80%90https://www.jianshu.com/p/d5c2613cbb81%E3%80%91">https://zhuanlan.zhihu.com/p/48269420】、【https://www.jianshu.com/p/d5c2613cbb81】</a></span></strong></p>
+<h3 id="mysql死锁"><a href="#mysql死锁" class="headerlink" title="mysql死锁"></a>mysql死锁</h3><p>参考：《《深入浅出MySQL 数据库开发、优化与管理维护（第2版）》.pdf》的20.3.9小节</p>
+<blockquote>
+<p>死锁：MyISAM引擎不会发生死锁，InnodDB会发生死锁。不同于MyISAM总是一次性获得所需的全部锁，InnoDB的锁是逐步获得的，当两个事务都需要获得对方持有的锁，导致双方都在等待，这就产生了死锁</p>
+</blockquote>
+<ul>
+<li>如何防止死锁</li>
+</ul>
+<p><img src="/img/image-20210823175900916.png" alt="image-20210823175900916"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210823180403222.png" alt="image-20210823180403222"></p>
+<p><img src="/img/image-20210823180456237.png" alt="image-20210823180456237"></p>
+<h2 id="高并发数据优化方案"><a href="#高并发数据优化方案" class="headerlink" title="高并发数据优化方案"></a>高并发数据优化方案</h2><h3 id="读多写少，如何优化数据查询方案？"><a href="#读多写少，如何优化数据查询方案？" class="headerlink" title="读多写少，如何优化数据查询方案？"></a>读多写少，如何优化数据查询方案？</h3><h4 id="mysql主从复制"><a href="#mysql主从复制" class="headerlink" title="mysql主从复制"></a>mysql主从复制</h4><p>读多写少的时候，你要考虑优化数据库来抗住高查询请求，首先要做的就是区分读写流量区。MySQL 做读写分离的前提，是把 MySQL 集群拆分成“主 + 从”结构的数据集群，这样才能实现程序上的读写分离，并且 MySQL 集群的主库、从库的数据是通过主从复制实现同步的。</p>
+<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211009173950037.png" alt="image-20211009173950037"></p>
+<img src="https://s0.lgstatic.com/i/image6/M00/01/18/CioPOWAbM7eAJvyLAAGMifLwArU490.png" alt="2021-02-04 (1).png" data-nodeid="15772">
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">主从复制过程</span><br><span class="line">但在面试中你不能简单地只讲这几个阶段，要尽可能详细地说明主库和从库的数据同步过程，为的是让面试官感受到你技术的扎实程度（详细过程如下）。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MySQL 主库在收到客户端提交事务的请求之后，会先写入 binlog，再提交事务，更新存储引擎中的数据，事务提交完成后，返回给客户端“操作成功”的响应。</span><br><span class="line"></span><br><span class="line">从库会创建一个专门的 I/O 线程，连接主库的 log dump 线程，来接收主库的 binlog 日志，再把 binlog 信息写入 relay log 的中继日志里，再返回给主库“复制成功”的响应。</span><br><span class="line"></span><br><span class="line">从库会创建一个用于回放 binlog 的线程，去读 relay log 中继日志，然后回放 binlog 更新存储引擎中的数据，最终实现主从的数据一致性。</span><br></pre></td></tr></table></figure>
+
+<h5 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h5><p>而这时，面试官一般会追问你“<strong>MySQL 主从复制还有哪些模型？”</strong>主要有三种。</p>
+<p>同步复制：事务线程要等待所有从库的复制成功响应。</p>
+<p>异步复制：事务线程完全不等待从库的复制成功响应。</p>
+<p>半同步复制：MySQL 5.7 版本之后增加的一种复制方式，介于两者之间，事务线程不用等待所有的从库复制成功响应，只要一部分复制成功响应回来就行，比如一主二从的集群，只要数据成功复制到任意一个从库上，主库的事务线程就可以返回给客户端。</p>
+<p>这种半同步复制的方式，兼顾了异步复制和同步复制的优点，即使出现主库宕机，至少还有一个从库有最新的数据，不存在数据丢失的风险。</p>
+<h4 id="解决主从复制延迟"><a href="#解决主从复制延迟" class="headerlink" title="解决主从复制延迟"></a>解决主从复制延迟</h4><p data-nodeid="15654">我们来结合实际案例设计一个主从复制延迟的解决方案。</p>
+<p data-nodeid="15655">在电商平台，每次用户发布商品评论时，都会先调用评论审核，目的是对用户发布的商品评论进行如言论监控、图片鉴黄等操作。</p>
+<p data-nodeid="15656">评论在更新完主库后，商品发布模块会异步调用审核模块，并把评论 ID 传递给审核模块，然后再由评论审核模块用评论 ID 查询从库中获取到完整的评论信息。此时如果主从数据库存在延迟，在从库中就会获取不到评论信息，整个流程就会出现异常。</p>
+<p data-nodeid="15657"><img src="https://s0.lgstatic.com/i/image6/M00/01/1A/Cgp9HWAbNB2ACf3mAAGLpR_O2fo928.png" alt="2021-02-04 (2).png" data-nodeid="15824"></p>
+<div data-nodeid="15658"><p style="text-align:center">主从延迟影响评论读取的实时性</p></div>
+<p data-nodeid="15659">这是主从复制延迟导致的查询异常，解决思路有很多，我提供给你几个方案。</p>
+<ul data-nodeid="15660">
+<li data-nodeid="15661">
+<p data-nodeid="15662"><strong data-nodeid="15829">使用数据冗余</strong></p>
+</li>
+</ul>
+<p data-nodeid="15663">可以在异步调用审核模块时，不仅仅发送商品 ID，而是发送审核模块需要的所有评论信息，借此避免在从库中重新查询数据（这个方案简单易实现，推荐你选择）。但你要注意每次调用的参数大小，过大的消息会占用网络带宽和通信时间。</p>
+<ul data-nodeid="15664">
+<li data-nodeid="15665">
+<p data-nodeid="15666"><strong data-nodeid="15834">使用缓存解决</strong></p>
+</li>
+</ul>
+<p data-nodeid="15667">可以在写入数据主库的同时，把评论数据写到 Redis 缓存里，这样其他线程再获取评论信息时会优先查询缓存，也可以保证数据的一致性。</p>
+<p data-nodeid="16425">不过这种方式会带来缓存和数据库的一致性问题，比如两个线程同时更新数据，操作步骤如下：</p>
+<p data-nodeid="16426" class=""><img src="https://s0.lgstatic.com/i/image6/M00/01/18/CioPOWAbNfuAcuHnAAHZwTbXvGA787.png" alt="2021-02-04 (5).png" data-nodeid="16434"></p>
+
+<p data-nodeid="15701">线程 A 先更新数据库为 100，此时线程 B 把数据库和缓存中的数据都更新成了 200，然后线程 A 又把缓存更新为 100，这样数据库中的值 200 和缓存中的值 100 就不一致了，解决这个问题，你可以参考 06 讲。</p>
+<p data-nodeid="15702">总的来说，通过缓存解决 MySQL 主从复制延迟时，会出现数据库与缓存数据不一致的情况。虽然它和“使用数据冗余”的方案相比并不优雅，但我还是建议你在面试中做一下补充，这样可以引出更多的技术知识，展现自己与其他人的差异。</p>
+<ul data-nodeid="15703">
+<li data-nodeid="15704">
+<p data-nodeid="15705"><strong data-nodeid="15871">直接查询主库</strong></p>
+</li>
+</ul>
+<p data-nodeid="15706">该方案在使用时一定要谨慎，你要提前明确查询的数据量不大，不然会出现主库写请求锁行，影响读请求的执行，最终对主库造成比较大的压力。</p>
+
+<h3 id="写多读少，如何优化数据存储方案？"><a href="#写多读少，如何优化数据存储方案？" class="headerlink" title="写多读少，如何优化数据存储方案？"></a>写多读少，如何优化数据存储方案？</h3><blockquote>
+<p>公司现有业务不断发展，流量剧增，交易数量突破了千万订单，但是订单数据还是单表存储，主从分离后，虽然减少了缓解读请求的压力，但随着写入压力增加，数据库的查询和写入性能都在下降，这时你要怎么设计架构？</p>
+</blockquote>
+<p>要想解决该问题，你可以对存储数据做分片，常见的方式就是对数据库做“分库分表”，在实现上有三种策略：垂直拆分、水平拆分、垂直水平拆分。</p>
+<h4 id="如何确定分库还是分表？"><a href="#如何确定分库还是分表？" class="headerlink" title="如何确定分库还是分表？"></a>如何确定分库还是分表？</h4><p>针对“如何确定分库还是分表？”的问题，你要结合具体的场景。</p>
+<p><strong>何时分表</strong></p>
+<p>当数据量过大造成事务执行缓慢时，就要考虑分表，因为减少每次查询数据总量是解决数据查询缓慢的主要原因。你可能会问：“查询可以通过主从分离或缓存来解决，为什么还要分表？”但这里的查询是指事务中的查询和更新操作。</p>
+<p><strong>何时分库</strong></p>
+<p>为了应对高并发，一个数据库实例撑不住，即单库的性能无法满足高并发的要求，就把并发请求分散到多个实例中去（这种应对高并发的思路我之前也说过）。</p>
+<p>总的来说，分库分表使用的场景不一样： 分表是因为数据量比较大，导致事务执行缓慢；分库是因为单库的性能无法满足要求。</p>
+<h4 id="如何选择分片策略？"><a href="#如何选择分片策略？" class="headerlink" title="如何选择分片策略？"></a>如何选择分片策略？</h4><p>在明确分库分表的场景后，面试官一般会追问“怎么进行分片？”换句话说就是按照什么分片策略对数据库进行分片？</p>
+<p><strong>垂直拆分</strong></p>
+<p><strong>水平拆分</strong></p>
+<p>1，哈希取模分片</p>
+<p>2，范围分片</p>
+<p>3，垂直水平拆分</p>
+<h2 id="复杂sql"><a href="#复杂sql" class="headerlink" title="复杂sql"></a>复杂sql</h2><p>多表联合更新</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update t_truck_info a,t_temp_license_record b set a.temp_license=b.temp_license,a.temp_license_back_image=b.driving_license_img where a.vin_code = b.vin_code and a.vin_code in (select vin_code from t_waybill where order_no = &#x27;OR00051439&#x27;);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>springmvc个人总结</title>
+    <url>/2022/07/23/springmvc%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="springmvc参数传递"><a href="#springmvc参数传递" class="headerlink" title="springmvc参数传递"></a>springmvc参数传递</h1><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213100048.png" alt="image-20211109213100048"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213340566.png" alt="image-20211109213340566"></p>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>设置Content-Type:multipart&#x2F;form-data</p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211110095259254.png" alt="image-20211110095259254"></p>
+<p><img src="/img/image-20211110095309699.png" alt="image-20211110095309699"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>数据结构和算法</title>
+    <url>/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+<li>二叉树前序遍历、中序遍历、后序遍历。</li>
+<li>满二叉树，完全二叉树（如果该二叉树的所有叶子节点都在最后一层或者倒数第二层，而且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，我们称为完全二叉树）。</li>
+<li>顺序存储二叉树是使用顺序存储的二叉树。将二叉树存储在一个数组中，通过存储元素的下标反映元素之间的父子关系。二叉树的顺序存储就是用一组连续的存储单元存放二又树中的结点元素，一般按照二叉树结点自上向下、自左向右的顺序存储。通常只考虑完全二叉树。</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="二叉排序树（也叫二叉搜索树）"><a href="#二叉排序树（也叫二叉搜索树）" class="headerlink" title="二叉排序树（也叫二叉搜索树）"></a>二叉排序树（也叫二叉搜索树）</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png" alt="image-20211017121948691"></p>
+<p>二叉排序树，中序遍历出来的数据是递增有序的。如果一个是递增数列如：{1，2，3，4，5}，创建二叉树时左子树全为空，更像一个单链表。</p>
+<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170451669.png" alt="image-20211017170451669"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170606509.png" alt="image-20211017170606509"></p>
+<p><img src="/img/image-20211017170716264.png" alt="image-20211017170716264"></p>
+<h3 id="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"><a href="#平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）" class="headerlink" title="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"></a>平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。（和完全二叉树不同，平衡二叉树没说叶子节点在左边或右边一定要连续）</p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017122347145.png" alt="image-20211017122347145"></p>
+<h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164634054.png" alt="image-20211017164634054"></p>
+<h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164654839.png" alt="image-20211017164654839"></p>
+<h4 id="左右双旋转"><a href="#左右双旋转" class="headerlink" title="左右双旋转"></a>左右双旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164808945.png" alt="image-20211017164808945"></p>
+<h2 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h2><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>B树，这个B是指Balanced , 平衡的意思，不是指的Binary ，要明确这点.</p>
+<p>B树仍然遵循(BST 二叉排序树)的规则</p>
+<p><img src="/img/image-20211018005242287.png" alt="image-20211018005242287"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018002139673.png" alt="image-20211018002139673"></p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003234124.png" alt="image-20211018003234124"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003300188.png" alt="image-20211018003300188"></p>
+<h3 id="mysql的B-树"><a href="#mysql的B-树" class="headerlink" title="mysql的B+树"></a>mysql的B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003332890.png" alt="image-20211018003332890"></p>
+<h4 id="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"><a href="#主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）" class="headerlink" title="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"></a>主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018020434517.png" alt="image-20211018020434517"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018022851648.png" alt="image-20211018022851648"></p>
+<h4 id="稠密索引、稀疏索引"><a href="#稠密索引、稀疏索引" class="headerlink" title="稠密索引、稀疏索引"></a>稠密索引、稀疏索引</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024153379.png" alt="image-20211018024153379"></p>
+<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024323135.png" alt="image-20211018024323135"></p>
 ]]></content>
   </entry>
   <entry>
@@ -344,183 +521,6 @@
 <p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211012173414277.png" alt="image-20211012173414277"></p>
 <h4 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h4><p>RabbitMQ 只会检查第一个消息是否过期，如果过期则丢到死信队列， 如果第一个消息的延时时长很长，而第二个消息的延时时长很短，第二个消息并不会优先得到执行（说白了消息是要排队的，先进先出）。</p>
 <h5 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h5><h3 id="如何保证顺序消费"><a href="#如何保证顺序消费" class="headerlink" title="如何保证顺序消费"></a>如何保证顺序消费</h3><h2 id="从RabbitMQ看设计模式"><a href="#从RabbitMQ看设计模式" class="headerlink" title="从RabbitMQ看设计模式"></a>从RabbitMQ看设计模式</h2><p>RabbitAdmin实现了AppplicationContextAware、InitializingBean接口。spring容器初始化RabbitAdmin后，调用InitializingBean的afterPropertiesSet()方法，在该方法内有一个监听器方法并传入一个匿名内部类实例，监听到有新的MQ连接时，回调这个内部类实例的方法，查找的spring容器创建的交换机、队列、绑定关系的Bean，并声明交换机、队列、绑定关系。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>mysql笔记(个人)</title>
-    <url>/2022/07/23/mysql%E7%AC%94%E8%AE%B0(%E4%B8%AA%E4%BA%BA)/</url>
-    <content><![CDATA[<h2 id="重置Root密码"><a href="#重置Root密码" class="headerlink" title="重置Root密码"></a><strong><u><span style='color:red'>重置Root密码</span></u></strong></h2><p>方法一:<br> 在my.ini的[mysqld]字段加入：<br>skip-grant-tables<br>重启mysql服务，这时的mysql不需要密码即可登录数据库<br> 然后进入mysql<br>mysql&gt;use mysql;<br> mysql&gt;更新 update user set password&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;(mysql5.7为：update user set authentication_string&#x3D;password(‘新密码’) WHERE User&#x3D;’root’;)<br>mysql&gt;flush privileges;<br> 运行之后最后去掉my.ini中的skip-grant-tables，重启mysql即可。</p>
-<span id="more"></span>
-
-<p>如果提示：You must reset your password using ALTER USER statement before executing this statement。</p>
-<p>进入mysql，执行命令：alter user user() identified by “新密码”;</p>
-<p>方法二:（若新的mysql版本只有mysqld，用mysqld代替mysqld-nt即可）<br> 不使用修改my.ini重启服务的方法，通过非服务方式加skip-grant-tables运行mysql来修改mysql密码<br> 停止mysql服务<br> 打开命令行窗口，在bin目录下使用mysqld-nt.exe启动，即在命令行窗口执行: mysqld-nt –skip-grant-tables<br> 然后另外打开一个命令行窗口，登录mysql，此时无需输入mysql密码即可进入。<br> 按以上方法修改好密码后,关闭命令行运行mysql的那个窗口，此时即关闭了mysql，如果发现mysql仍在运行<br> 的话可以结束掉对应进程来关闭。<br> 启动mysql服务</p>
-<h2 id="备份、恢复数据库"><a href="#备份、恢复数据库" class="headerlink" title="备份、恢复数据库"></a><strong><u><span style='color:red'>备份、恢复数据库</span></u></strong></h2><p>备份：</p>
-<p>–cmd&gt; mysqldump -u用户名 -p –database 数据库名 &gt; 文件名.sql &#x2F;&#x2F; 在cmd下使用</p>
-<!--database可省略，两者之间的差别在于不使用 --databases 选项，则备份输出信息中不会包含CREATE DATABASE或USE DATABASE语句。不使用 --databases 选项备份的数据文件，在后期进行数据还原操作时，如果该数据库不存在，必须先创建该数据库。-->
-
-<p>恢复：</p>
-<p>–source 文件名.sql  &#x2F;&#x2F; 在mysql内部使用</p>
-<!--如果备份时命令没加--database,恢复时要先执行命令--use 数据库名。如果数据库不存在，必须先创建数据库，恢复时先执行命令--use 数据库名，或者备份时命令加上--database（恢复时不用执行命令--use 数据库名）-->
-
-<p>–mysql –u用户名 -p 数据库名 &lt; 文件名.sql &#x2F;&#x2F; 在cmd下使用</p>
-<!--如果备份时命令没加--database,恢复命令的”数据库名“不能省略。如果数据库不存在，必须先创建数据库（恢复命令的”数据库名“不能省略），或者备份时命令加上--database（恢复命令的”数据库名“可以省略）-->
-
-
-
-<h2 id="mysql登录连接参数详解"><a href="#mysql登录连接参数详解" class="headerlink" title="mysql登录连接参数详解"></a><strong><u><span style='color:red'>mysql登录连接参数详解</span></u></strong></h2><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql [options] [database]</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">参数 ： </span><br><span class="line">	-u, --user=name			指定用户名</span><br><span class="line">	-p, --password[=name]	指定密码</span><br><span class="line">	-h, --host=name			指定要连接的服务器IP或域名</span><br><span class="line">	-P, --port=#			指定连接端口</span><br><span class="line"></span><br><span class="line">示例 ：</span><br><span class="line">	mysql -h 127.0.0.1 -P 3306 -u root -p</span><br><span class="line">	</span><br><span class="line">	mysql -h127.0.0.1 -P3306 -uroot -p2143</span><br></pre></td></tr></table></figure>
-
-<p>​	</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210322220017115.png" alt="image-20210322220017115"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210322220448763.png" alt="image-20210322220448763"></p>
-<h2 id="mysql的锁机制——记录锁、间隙锁、临键锁"><a href="#mysql的锁机制——记录锁、间隙锁、临键锁" class="headerlink" title="mysql的锁机制——记录锁、间隙锁、临键锁"></a><strong><u><span style='color:red'>mysql的锁机制——记录锁、间隙锁、临键锁</span></u></strong></h2><p>innoDB支持三种行锁定方式：</p>
-<ul>
-<li>行锁（Record Lock）：锁直接加在索引记录上面（无索引项时演变成表锁）。</li>
-<li>间隙锁（Gap Lock）：锁定索引记录间隙，确保索引记录的间隙不变。间隙锁是针对事务隔离级别为可重复读或以上级别的。</li>
-<li>Next-Key Lock ：行锁和间隙锁组合起来就是 Next-Key Lock。</li>
-</ul>
-<p>innoDB默认的隔离级别是可重复读(Repeatable Read)，并且会以Next-Key Lock的方式对数据行进行加锁。Next-Key Lock是行锁和间隙锁的组合，当InnoDB扫描索引记录的时候，会首先对索引记录加上行锁（Record Lock），再对索引记录两边的间隙加上间隙锁（Gap Lock）。加上间隙锁之后，其他事务就不能在这个间隙修改或者插入记录。</p>
-<p>当查询的索引含有唯一属性（唯一索引，主键索引）时，Innodb存储引擎会对next-key lock进行优化，将其降为record lock,即仅锁住索引本身，而不是范围。</p>
-<p>间隙锁只有在事务隔离级别 RR 中才会产生；</p>
-<h3 id="何时使用行锁，何时产生间隙锁"><a href="#何时使用行锁，何时产生间隙锁" class="headerlink" title="何时使用行锁，何时产生间隙锁"></a>何时使用行锁，何时产生间隙锁</h3><ol>
-<li><p>只使用唯一索引查询，并且只锁定一条记录时，innoDB会使用行锁**<span style='color:red'>(即Innodb存储引擎会对next-key lock进行优化，将其降为record lock,即仅锁住索引本身，而不是范围)</span>**。</p>
-</li>
-<li><p>只使用唯一索引查询，但是检索条件是范围检索，或者是唯一检索然而检索结果不存在（试图锁住不存在的数据）时，会产生 Next-Key Lock。</p>
-</li>
-<li><p>使用普通索引检索时，不管是何种查询，只要加锁，都会产生间隙锁，这跟唯一索引不一样。</p>
-</li>
-<li><p>同时使用唯一索引和普通索引时，由于数据行是优先根据普通索引排序，再根据唯一索引排序，所以也会产生间隙锁**<span style='color:red'>(如果普通索引和间隙界限的普通索引相同无法判断是否在间隙内，则可以根据唯一索引和间隙界限的普通索引排序来判断是否在间隙内)</span>**。</p>
-</li>
-</ol>
-<p><strong>以上2和3中在查询条件范围内已存在的某一或某些行的索引项同时会被加上记录锁，在查询条件范围内但不存在的间隙内会加上间隙锁</strong></p>
-<h3 id="mysql的innodb引擎在默认RR-Repeatable-Read-级别下如何防止幻读"><a href="#mysql的innodb引擎在默认RR-Repeatable-Read-级别下如何防止幻读" class="headerlink" title="mysql的innodb引擎在默认RR(Repeatable Read)级别下如何防止幻读"></a>mysql的innodb引擎在默认RR(Repeatable Read)级别下如何防止幻读</h3><p>在快照读（snapshot read）的情况下，MySQL通过MVCC（多版本并发控制）来避免幻读。</p>
-<blockquote>
-<p>快照读，读取的是记录的可见版本 (有可能是历史版本)，不用加锁。主要应用于无需加锁的普通查询（select）操作。</p>
-</blockquote>
-<p>在当前读（current read）的情况下，MySQL通过next-key lock来避免幻读。</p>
-<blockquote>
-<p>当前读，读取的是记录的最新版本，并且会对当前记录加锁，防止其他事务发修改这条记录。加行共享锁（SELECT … LOCK IN SHARE MODE ）、加行排他锁（SELECT … FOR UPDATE &#x2F; INSERT &#x2F; UPDATE &#x2F; DELETE）的操作都会用到当前读。行锁可参看 <a href="https://links.jianshu.com/go?to=https://blog.csdn.net/zmflying8177/article/details/104826872">MySQL行锁</a>。</p>
-</blockquote>
-<p>MVCC只 在 READ COMMITTED 和 REPEATABLE READ 两个隔离级别下⼯作</p>
-<p><strong><span style='color:red'>MYSQL锁机制参考：【<a href="https://zhuanlan.zhihu.com/p/48269420%E3%80%91%E3%80%81%E3%80%90https://www.jianshu.com/p/d5c2613cbb81%E3%80%91">https://zhuanlan.zhihu.com/p/48269420】、【https://www.jianshu.com/p/d5c2613cbb81】</a></span></strong></p>
-<h3 id="mysql死锁"><a href="#mysql死锁" class="headerlink" title="mysql死锁"></a>mysql死锁</h3><p>参考：《《深入浅出MySQL 数据库开发、优化与管理维护（第2版）》.pdf》的20.3.9小节</p>
-<blockquote>
-<p>死锁：MyISAM引擎不会发生死锁，InnodDB会发生死锁。不同于MyISAM总是一次性获得所需的全部锁，InnoDB的锁是逐步获得的，当两个事务都需要获得对方持有的锁，导致双方都在等待，这就产生了死锁</p>
-</blockquote>
-<ul>
-<li>如何防止死锁</li>
-</ul>
-<p><img src="/img/image-20210823175900916.png" alt="image-20210823175900916"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20210823180403222.png" alt="image-20210823180403222"></p>
-<p><img src="/img/image-20210823180456237.png" alt="image-20210823180456237"></p>
-<h2 id="高并发数据优化方案"><a href="#高并发数据优化方案" class="headerlink" title="高并发数据优化方案"></a>高并发数据优化方案</h2><h3 id="读多写少，如何优化数据查询方案？"><a href="#读多写少，如何优化数据查询方案？" class="headerlink" title="读多写少，如何优化数据查询方案？"></a>读多写少，如何优化数据查询方案？</h3><h4 id="mysql主从复制"><a href="#mysql主从复制" class="headerlink" title="mysql主从复制"></a>mysql主从复制</h4><p>读多写少的时候，你要考虑优化数据库来抗住高查询请求，首先要做的就是区分读写流量区。MySQL 做读写分离的前提，是把 MySQL 集群拆分成“主 + 从”结构的数据集群，这样才能实现程序上的读写分离，并且 MySQL 集群的主库、从库的数据是通过主从复制实现同步的。</p>
-<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211009173950037.png" alt="image-20211009173950037"></p>
-<img src="https://s0.lgstatic.com/i/image6/M00/01/18/CioPOWAbM7eAJvyLAAGMifLwArU490.png" alt="2021-02-04 (1).png" data-nodeid="15772">
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">主从复制过程</span><br><span class="line">但在面试中你不能简单地只讲这几个阶段，要尽可能详细地说明主库和从库的数据同步过程，为的是让面试官感受到你技术的扎实程度（详细过程如下）。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MySQL 主库在收到客户端提交事务的请求之后，会先写入 binlog，再提交事务，更新存储引擎中的数据，事务提交完成后，返回给客户端“操作成功”的响应。</span><br><span class="line"></span><br><span class="line">从库会创建一个专门的 I/O 线程，连接主库的 log dump 线程，来接收主库的 binlog 日志，再把 binlog 信息写入 relay log 的中继日志里，再返回给主库“复制成功”的响应。</span><br><span class="line"></span><br><span class="line">从库会创建一个用于回放 binlog 的线程，去读 relay log 中继日志，然后回放 binlog 更新存储引擎中的数据，最终实现主从的数据一致性。</span><br></pre></td></tr></table></figure>
-
-<h5 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h5><p>而这时，面试官一般会追问你“<strong>MySQL 主从复制还有哪些模型？”</strong>主要有三种。</p>
-<p>同步复制：事务线程要等待所有从库的复制成功响应。</p>
-<p>异步复制：事务线程完全不等待从库的复制成功响应。</p>
-<p>半同步复制：MySQL 5.7 版本之后增加的一种复制方式，介于两者之间，事务线程不用等待所有的从库复制成功响应，只要一部分复制成功响应回来就行，比如一主二从的集群，只要数据成功复制到任意一个从库上，主库的事务线程就可以返回给客户端。</p>
-<p>这种半同步复制的方式，兼顾了异步复制和同步复制的优点，即使出现主库宕机，至少还有一个从库有最新的数据，不存在数据丢失的风险。</p>
-<h4 id="解决主从复制延迟"><a href="#解决主从复制延迟" class="headerlink" title="解决主从复制延迟"></a>解决主从复制延迟</h4><p data-nodeid="15654">我们来结合实际案例设计一个主从复制延迟的解决方案。</p>
-<p data-nodeid="15655">在电商平台，每次用户发布商品评论时，都会先调用评论审核，目的是对用户发布的商品评论进行如言论监控、图片鉴黄等操作。</p>
-<p data-nodeid="15656">评论在更新完主库后，商品发布模块会异步调用审核模块，并把评论 ID 传递给审核模块，然后再由评论审核模块用评论 ID 查询从库中获取到完整的评论信息。此时如果主从数据库存在延迟，在从库中就会获取不到评论信息，整个流程就会出现异常。</p>
-<p data-nodeid="15657"><img src="https://s0.lgstatic.com/i/image6/M00/01/1A/Cgp9HWAbNB2ACf3mAAGLpR_O2fo928.png" alt="2021-02-04 (2).png" data-nodeid="15824"></p>
-<div data-nodeid="15658"><p style="text-align:center">主从延迟影响评论读取的实时性</p></div>
-<p data-nodeid="15659">这是主从复制延迟导致的查询异常，解决思路有很多，我提供给你几个方案。</p>
-<ul data-nodeid="15660">
-<li data-nodeid="15661">
-<p data-nodeid="15662"><strong data-nodeid="15829">使用数据冗余</strong></p>
-</li>
-</ul>
-<p data-nodeid="15663">可以在异步调用审核模块时，不仅仅发送商品 ID，而是发送审核模块需要的所有评论信息，借此避免在从库中重新查询数据（这个方案简单易实现，推荐你选择）。但你要注意每次调用的参数大小，过大的消息会占用网络带宽和通信时间。</p>
-<ul data-nodeid="15664">
-<li data-nodeid="15665">
-<p data-nodeid="15666"><strong data-nodeid="15834">使用缓存解决</strong></p>
-</li>
-</ul>
-<p data-nodeid="15667">可以在写入数据主库的同时，把评论数据写到 Redis 缓存里，这样其他线程再获取评论信息时会优先查询缓存，也可以保证数据的一致性。</p>
-<p data-nodeid="16425">不过这种方式会带来缓存和数据库的一致性问题，比如两个线程同时更新数据，操作步骤如下：</p>
-<p data-nodeid="16426" class=""><img src="https://s0.lgstatic.com/i/image6/M00/01/18/CioPOWAbNfuAcuHnAAHZwTbXvGA787.png" alt="2021-02-04 (5).png" data-nodeid="16434"></p>
-
-<p data-nodeid="15701">线程 A 先更新数据库为 100，此时线程 B 把数据库和缓存中的数据都更新成了 200，然后线程 A 又把缓存更新为 100，这样数据库中的值 200 和缓存中的值 100 就不一致了，解决这个问题，你可以参考 06 讲。</p>
-<p data-nodeid="15702">总的来说，通过缓存解决 MySQL 主从复制延迟时，会出现数据库与缓存数据不一致的情况。虽然它和“使用数据冗余”的方案相比并不优雅，但我还是建议你在面试中做一下补充，这样可以引出更多的技术知识，展现自己与其他人的差异。</p>
-<ul data-nodeid="15703">
-<li data-nodeid="15704">
-<p data-nodeid="15705"><strong data-nodeid="15871">直接查询主库</strong></p>
-</li>
-</ul>
-<p data-nodeid="15706">该方案在使用时一定要谨慎，你要提前明确查询的数据量不大，不然会出现主库写请求锁行，影响读请求的执行，最终对主库造成比较大的压力。</p>
-
-<h3 id="写多读少，如何优化数据存储方案？"><a href="#写多读少，如何优化数据存储方案？" class="headerlink" title="写多读少，如何优化数据存储方案？"></a>写多读少，如何优化数据存储方案？</h3><blockquote>
-<p>公司现有业务不断发展，流量剧增，交易数量突破了千万订单，但是订单数据还是单表存储，主从分离后，虽然减少了缓解读请求的压力，但随着写入压力增加，数据库的查询和写入性能都在下降，这时你要怎么设计架构？</p>
-</blockquote>
-<p>要想解决该问题，你可以对存储数据做分片，常见的方式就是对数据库做“分库分表”，在实现上有三种策略：垂直拆分、水平拆分、垂直水平拆分。</p>
-<h4 id="如何确定分库还是分表？"><a href="#如何确定分库还是分表？" class="headerlink" title="如何确定分库还是分表？"></a>如何确定分库还是分表？</h4><p>针对“如何确定分库还是分表？”的问题，你要结合具体的场景。</p>
-<p><strong>何时分表</strong></p>
-<p>当数据量过大造成事务执行缓慢时，就要考虑分表，因为减少每次查询数据总量是解决数据查询缓慢的主要原因。你可能会问：“查询可以通过主从分离或缓存来解决，为什么还要分表？”但这里的查询是指事务中的查询和更新操作。</p>
-<p><strong>何时分库</strong></p>
-<p>为了应对高并发，一个数据库实例撑不住，即单库的性能无法满足高并发的要求，就把并发请求分散到多个实例中去（这种应对高并发的思路我之前也说过）。</p>
-<p>总的来说，分库分表使用的场景不一样： 分表是因为数据量比较大，导致事务执行缓慢；分库是因为单库的性能无法满足要求。</p>
-<h4 id="如何选择分片策略？"><a href="#如何选择分片策略？" class="headerlink" title="如何选择分片策略？"></a>如何选择分片策略？</h4><p>在明确分库分表的场景后，面试官一般会追问“怎么进行分片？”换句话说就是按照什么分片策略对数据库进行分片？</p>
-<p><strong>垂直拆分</strong></p>
-<p><strong>水平拆分</strong></p>
-<p>1，哈希取模分片</p>
-<p>2，范围分片</p>
-<p>3，垂直水平拆分</p>
-<h2 id="复杂sql"><a href="#复杂sql" class="headerlink" title="复杂sql"></a>复杂sql</h2><p>多表联合更新</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">update t_truck_info a,t_temp_license_record b set a.temp_license=b.temp_license,a.temp_license_back_image=b.driving_license_img where a.vin_code = b.vin_code and a.vin_code in (select vin_code from t_waybill where order_no = &#x27;OR00051439&#x27;);</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>数据结构和算法</title>
-    <url>/2022/07/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
-<li>二叉树前序遍历、中序遍历、后序遍历。</li>
-<li>满二叉树，完全二叉树（如果该二叉树的所有叶子节点都在最后一层或者倒数第二层，而且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，我们称为完全二叉树）。</li>
-<li>顺序存储二叉树是使用顺序存储的二叉树。将二叉树存储在一个数组中，通过存储元素的下标反映元素之间的父子关系。二叉树的顺序存储就是用一组连续的存储单元存放二又树中的结点元素，一般按照二叉树结点自上向下、自左向右的顺序存储。通常只考虑完全二叉树。</li>
-</ul>
-<span id="more"></span>
-
-<h3 id="二叉排序树（也叫二叉搜索树）"><a href="#二叉排序树（也叫二叉搜索树）" class="headerlink" title="二叉排序树（也叫二叉搜索树）"></a>二叉排序树（也叫二叉搜索树）</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017121948691.png" alt="image-20211017121948691"></p>
-<p>二叉排序树，中序遍历出来的数据是递增有序的。如果一个是递增数列如：{1，2，3，4，5}，创建二叉树时左子树全为空，更像一个单链表。</p>
-<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170451669.png" alt="image-20211017170451669"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017170606509.png" alt="image-20211017170606509"></p>
-<p><img src="/img/image-20211017170716264.png" alt="image-20211017170716264"></p>
-<h3 id="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"><a href="#平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）" class="headerlink" title="平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）"></a>平衡二叉树（也叫平衡二叉排序树、平衡二叉搜索树）</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。（和完全二叉树不同，平衡二叉树没说叶子节点在左边或右边一定要连续）</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017122347145.png" alt="image-20211017122347145"></p>
-<h4 id="左旋转"><a href="#左旋转" class="headerlink" title="左旋转"></a>左旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164634054.png" alt="image-20211017164634054"></p>
-<h4 id="右旋转"><a href="#右旋转" class="headerlink" title="右旋转"></a>右旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164654839.png" alt="image-20211017164654839"></p>
-<h4 id="左右双旋转"><a href="#左右双旋转" class="headerlink" title="左右双旋转"></a>左右双旋转</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211017164808945.png" alt="image-20211017164808945"></p>
-<h2 id="多叉树"><a href="#多叉树" class="headerlink" title="多叉树"></a>多叉树</h2><h3 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>B树，这个B是指Balanced , 平衡的意思，不是指的Binary ，要明确这点.</p>
-<p>B树仍然遵循(BST 二叉排序树)的规则</p>
-<p><img src="/img/image-20211018005242287.png" alt="image-20211018005242287"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018002139673.png" alt="image-20211018002139673"></p>
-<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003234124.png" alt="image-20211018003234124"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003300188.png" alt="image-20211018003300188"></p>
-<h3 id="mysql的B-树"><a href="#mysql的B-树" class="headerlink" title="mysql的B+树"></a>mysql的B+树</h3><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018003332890.png" alt="image-20211018003332890"></p>
-<h4 id="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"><a href="#主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）" class="headerlink" title="主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）"></a>主键索引（一级索引、聚簇索引）、非主键索引（二级索引、辅助索引）</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018020434517.png" alt="image-20211018020434517"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018022851648.png" alt="image-20211018022851648"></p>
-<h4 id="稠密索引、稀疏索引"><a href="#稠密索引、稀疏索引" class="headerlink" title="稠密索引、稀疏索引"></a>稠密索引、稀疏索引</h4><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024153379.png" alt="image-20211018024153379"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211018024323135.png" alt="image-20211018024323135"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>springmvc个人总结</title>
-    <url>/2022/07/23/springmvc%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="springmvc参数传递"><a href="#springmvc参数传递" class="headerlink" title="springmvc参数传递"></a>springmvc参数传递</h1><p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213100048.png" alt="image-20211109213100048"></p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211109213340566.png" alt="image-20211109213340566"></p>
-<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>设置Content-Type:multipart&#x2F;form-data</p>
-<p><img src="https://wzxedu-1010.oss-cn-beijing.aliyuncs.com/notes/image-20211110095259254.png" alt="image-20211110095259254"></p>
-<p><img src="/img/image-20211110095309699.png" alt="image-20211110095309699"></p>
 ]]></content>
   </entry>
 </search>
