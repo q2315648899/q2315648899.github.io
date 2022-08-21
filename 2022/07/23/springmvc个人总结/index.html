@@ -54,7 +54,7 @@
 
 
 
-<link rel="dns-prefetch" href="https://waline-test-sigma.vercel.app/"><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css"><script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+<link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css"><link rel="dns-prefetch" href="https://waline-test-sigma.vercel.app/"><script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -196,7 +196,10 @@
   </div>
 
 
-
+<!-- CloudCalendar -->
+<div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	<div class="widget" id="CloudCalendar"></div>
+</div>
         </div>
       </div>
 
@@ -211,6 +214,11 @@
 	  	</div>
 	  </div>
 	  
+
+	  <!-- CloudCalendar -->
+	  <div class="widget-wrap" style="width: 90%;margin-left: auto;margin-right: auto; opacity: 0.97;">
+	  	<div class="widget" id="CloudCalendar"></div>
+	  </div>
     </div>
   </aside>
   <div class="sidebar-dimmer"></div>
@@ -534,6 +542,23 @@ document.addEventListener('page:loaded', () => {
   );
 });
 </script>
+<!-- calendar widget -->
+{% if theme.CloudCalendar.enable %}
+    <script src="{{ theme.CloudCalendar.calendarCdn }}"></script>
+    <script src="{{ theme.CloudCalendar.langCdn }}"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('{{ theme.CloudCalendar.language }}',
+            $.extend(
+                '', {
+                    single:{{ theme.CloudCalendar.single }},
+                    root:'{{ theme.CloudCalendar.root }}'
+                }
+            )
+        );
+    });
+    </script>
+{% endif %}
 
   <script type="text/javascript">
     function isPC() {
@@ -561,5 +586,22 @@ document.addEventListener('page:loaded', () => {
       }
     
   </script>
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
 </body>
 </html>
